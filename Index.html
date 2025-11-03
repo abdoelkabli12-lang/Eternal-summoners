@@ -5,7 +5,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Press+Start+2P&family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Lexend:wght@100..900&family=Press+Start+2P&family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -18,7 +20,7 @@
   <body class="bg-gradient-to-b from-red to-blue from-magenta to-cyan bg-no-repeat w-fill">
     <header class="relative flex justify-center items-start">
       <img src = "imgs/Group 76.png" alt="logo" class="w-40 absolute left-6 md:w-60 lg:w-70">
-      <img src="imgs/Group 135.png" alt="Market icon" class="relative left-[65rem]">
+      <img src="imgs/Group 135.png" alt="Market icon" class="relative left-[65rem] hidden">
 
       <nav>
         <ul class="list-none relative right-10 gap-18 font-bold text-3xl font-[Inter] hidden md:flex top-10 lg:flex top-4">
@@ -67,11 +69,41 @@
             <img src="imgs/pokemon.png" alt="pokemon mini card1" class="w-[8rem]">
             <img src="imgs/pokemon-1.png" alt="pokemon mini card2" class="w-[8rem]">
           </div>
-          <img src="imgs/pokebol-pokeball-sharik 1.png" alt="bg2"  >
-          <p>
+          <img src="imgs/pokebol-pokeball-sharik 1.png" alt="bg2" class="relative">
+          <p class="absolute top-40 text-white font-semibold font-[K2D] italic text-4xl">
             Product Guide
           </p>
-          <img src="imgs" alt="">
+
+          <p class="absolute top-55 text-white font-bold font-[K2D] text-[1.2rem] w-[89%] text-shadow-[4px_2px_3px_rgba(0,0,0,0.5)]">
+            Be our future legacy and make your pockemon dreams come to ife  with our new and exclusive decks.
+          </p>
+          <img src="imgs/card5.png" alt="card..." class="relative top-12">
+        </div>
+
+        <div class="relative flex flex-col w-[22rem] items-center top-30">
+          <div class="relative grid grid-cols-2 w-[20rem] justify-items-center">
+            <img src="imgs/pokemon3.png" alt="pokemon mini card1" class="w-[8rem]">
+            <img src="imgs/pokemon4.png" alt="pokemon mini card2" class="w-[8rem]">
+          </div>
+          <img src="imgs/pokebol-pokeball-sharik 1.png" alt="bg2" class="relative">
+          <p class="absolute top-40 text-white font-semibold font-[K2D] italic text-4xl">
+            Product Guide
+          </p>
+
+          <p class="absolute top-55 text-white font-bold font-[K2D] text-[1.2rem] w-[89%] text-shadow-[4px_2px_3px_rgba(0,0,0,0.5)]">
+            Be our future legacy and make your pockemon dreams come to ife  with our new and exclusive decks.
+          </p>
+          <img src="imgs/card4.png" alt="card..." class="relative top-12">
+        </div>
+
+        <div class="relative flex flex-col w-[22rem] items-center top-30">
+          <div class="relative grid grid-cols-1 w-[20rem] justify-items-center">
+            <p class="relative top-30 text-white font-bold font-[K2D] text-[1.2rem] w-[89%] text-shadow-[4px_2px_3px_rgba(0,0,0,0.5)]">
+              Be our future legacy and make your pockemon dreams come to ife  with our new and exclusive decks.
+Be our future legacy and make your pockemon dreams come to ife  with our new and exclusive decks.
+            </p>
+          </div>
+          <img src="imgs/Frame 67.png" alt="card..." class="relative top-30">
         </div>
         
 
@@ -79,7 +111,7 @@
     </main>
 
     <footer>
-      <div class="relative flex flex-row flex-wrap items-center justify-around h-120">
+      <div class="relative flex flex-col flex-wrap items-center justify-between mt-40">
         <div class="relative flex flex-col items-center">
           <img src="imgs/Group 76.png" alt="footer image" class="relative top-16 w-55">
           <p class="relative w-60 text-center text-white text-sm font-[Poppins] font-sans font-medium ">
@@ -87,55 +119,56 @@
           </p>
         </div>
 
-        <img src="imgs/Line 10.png" alt="line..." class="relative top-15">
+        <img src="imgs/Line 10.png" alt="line..." class="relative top-15 hidden">
 
-        <div class="relative top-20">
-          <h2 class="relative text-2xl font-bold text-[#F0D43A] bottom-8 ">
-            Game things
-          </h2>
-          <ul class="flex flex-col gap-3 text-white font-medium text-lg">
-            <li><a href="#">
-              How to play
-            </a></li>
+        <div class="relative flex flex-row gap-12 h-55 mt-12">
+          <div class="relative mt-8">
+            <h2 class="relative text-sm font-bold text-[#F0D43A] bottom-8 ">
+              Game things
+            </h2>
+            <ul class="flex flex-col gap-3 text-white font-medium text-md">
+              <li><a href="#">
+                How to play
+              </a></li>
 
-            <li><a href="#">
-              Devs
-            </a></li>
+              <li><a href="#">
+                Devs
+              </a></li>
 
-            <li><a href="#">
-              Mobile App
-            </a></li>
-          </ul>
-        </div>
+              <li><a href="#">
+                Mobile App
+              </a></li>
+            </ul>
+          </div>
 
-        <img src="imgs/Line 10.png" alt="line..." class="relative top-15">
-        
-        <div class="relative  top-20">
-          <h2 class="relative text-2xl font-bold text-[#F0D43A] bottom-8">
-            Contact
-          </h2>
-          <ul class="flex flex-col gap-3 text-white font-medium text-lg">
-            <li><a href="#">
-              Help/FAQ
-            </a></li>
-
-            <li><a href="#">
+          <img src="imgs/Line 10.png" alt="line..." class="relative top-15 hidden">
+          
+          <div class="relative  mt-8">
+            <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
               Contact
-            </a></li>
+            </h2>
+            <ul class="flex flex-col gap-3 text-white font-medium text-sm">
+              <li><a href="#">
+                Help/FAQ
+              </a></li>
 
-            <li><a href="#">
-              Address
-            </a></li>
-          </ul>
-        </div>
+              <li><a href="#">
+                Contact
+              </a></li>
 
-        <img src="imgs/Line 10.png" alt="line..." class="relative  top-15">
+              <li><a href="#">
+                Address
+              </a></li>
+            </ul>
+          </div>
 
-          <div class="relative top-20">
-            <h2 class="relative text-2xl font-bold text-[#F0D43A] bottom-8">
+          <img src="imgs/Line 10.png" alt="line..." class="relative  top-15 hidden">
+
+          <div class="relative mt-8">
+            <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
               More
             </h2>
-            <ul class="flex flex-col gap-3 text-white font-medium text-lg">
+            <ul class="flex flex-col gap-3 text-white font-medium text-sm">
               <li><a href="#">
                 About Pokemon
               </a></li>
@@ -145,11 +178,14 @@
               </a></li>
 
               <li><a href="#">
-                Get your plushy now!
+                Get your plushy!
               </a></li>
             </ul>
           </div>
         </div>
+        <p class="text-white mb-3 bottom-12">
+            All rights reserved@genZdevs.co
+        </p>
       </div>
 
     </footer>
@@ -161,6 +197,7 @@
         extend: {
           fontFamily: {
             'press-start': ['"Press Start 2P"', 'cursive'],
+            'K2D': ['"K2D"', 'cursive'],
           },
           colors: {
             red: '#A63348',
