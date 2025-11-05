@@ -16,53 +16,70 @@
 
   <body>
 
-    <div class="relative w-[17rem]">
-      <img src="imgs/card3.png" class="absolute">
-
-      <div class="absolute z-100 w-10 h-10 bg-gblue ">
-        <p id="number" class="">
-          001
-        </p>
+    <div class="relative w-60 h-90 border-stroke border-8 rounded-lg">
+      <div class="absolute bg-underbg [z-index:-1] h-70 w-[14rem] top-16">
       </div>
 
-        
-
-      <img src="imgs/image.png" id="image" class="absolute w-[14rem]">
-      <p id="name" class="">
-        Pikachu
-      </p>
-
-      <p id="classification" class="">
-        Mouse pokemon
-      </p>
-
-      <p id="types.0" class="">
-        Electric
-      </p>
-
-      <p id="maxHP" class="">
-        887
-      </p>
-
-      <p id="maxCP" class="">
-        777
-      </p>
-
-      <p id="height.maximum" class="">
-        0.45m
-      </p>
-
-      <p id="resistant.0" class="">
-        Electric
-      </p>
       
-      <p id="resistant.1" class="">
-        Flying
-      </p>
+      <div>
+        <div class="absolute flex items-center justify-center z-100 w-10 h-10 bg-gblue right-3 top-2 rounded-full md:h-15 w-15">
+          <p id="number" class="text-white font-semibold text-[18px] text-center md:text-[20px]">
+            001
+          </p>
+        </div>
 
-      <p id="weaknesses.0" class="">
-        Ground
-      </p>
+          
+
+        <img src="imgs/image.png" id="image" class="relative w-[14rem]">
+
+        <img src="imgs/Ellipse 1.png" class="absolute left-16 top-30 z-12">
+        <img src="imgs/Ellipse 2.png" class="absolute left-1 top-[15rem] z-12 w-30">
+        <div class="relative grid grid-cols-2  grid-rows-1 top-5 right-3">
+          
+
+          <p id="name" class="font-extrabold font-[Inter] text-lg text-center text-blue">
+            <span>Pikachu</span>
+          </p>
+          
+          
+          <p id="types.0" class="relative bg-grayish text-white font-bold font-[Inter] text-sm text-center rounded-full pt-1 pb-1 w-16 right-3">
+            <span>Electric</span>
+          </p>
+        </div>
+
+          <p id="classification" class="relative text-grey text-sm ml-3 font-[Inter] font-medium top-5">
+            Mouse pokemon
+          </p>
+          <div class="relative flex gap-1 ml-3 top-7 text-center">
+            <p id="maxHP" class="bg-white inline pt-1 pl-2 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">HP
+              <span class="font-bold">887</span>
+            </p>
+
+            <p id="maxCP" class="bg-white inline pt-1 pl-2 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">CP
+              <span class="font-bold">777</span>
+            </p>
+
+            <p id="height.maximum" class="bg-white inline pt-1 pl-2 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">W
+              <span class="font-bold">0.45m</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="relative left-3 mt-9 font-bold">
+          
+          <p id="resistant.0" class="bg-white inline rounded-[5px] font-[Inter] text-xs text-blue pt-1 pl-4 pb-1 pr-1">
+            <img src="imgs/shield.png" class="absolute w-4"> Electric 
+          </p>
+          
+          <p id="resistant.1" class="relative bg-white inline pt-1 pl-4 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">
+            <img src="imgs/shield.png" class="absolute inline right-[40px] w-4"> Flying
+          </p>
+
+          <p id="weaknesses.0" class="relative bg-white inline pt-1 pl-4 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">
+            <img src="imgs/shield.png" class="absolute inline right-[45px] w-4"> Ground
+          </p>
+        </div>
+        
     </div>
 
 
@@ -83,11 +100,19 @@
             cyan: '#1B7C97',
             grey: '#6B7280',
             gblue: '#374151',
-          }
+            stroke: '#4B5563',
+            underbg: '#E5E7EB',
+            grayish: '#374151',
+          },
+          backgroundImage: {
+            'card-image': "url('/imgs/card3.png')",
+          },
         }
       }
     }
   </script>
+
+  <script type="text/javascript" src="style.js"></script>
 
   </body>
 </html>
