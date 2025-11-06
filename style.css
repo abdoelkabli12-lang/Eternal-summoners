@@ -1,0 +1,19 @@
+.common {
+  background:  linear-gradient();
+}
+
+.uncommon {
+  background: linear-gradient(#00FFF2 50%, #00FF2F);
+}
+
+.rare {
+  background: linear-gradient(#0055FF 50%, #51FF88);
+}
+
+.legendary {
+  background: linear-gradient(#FFFB00 50%, #FFF280, #59FFE9);
+}
+
+.mythic {
+  background: linear-gradient(#FF9D00 50%, #FF0000);
+}

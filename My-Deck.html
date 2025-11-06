@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Lexend:wght@100..900&family=Press+Start+2P&family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+  <title>
+
+  </title>
+</head>
+
+<body class="bg-gradient-to-b from-red to-blue from-magenta to-cyan bg-no-repeat w-fill">
+  <header class="relative flex justify-center items-start">
+    <img src="imgs/Group 76.png" alt="logo" class="w-40 absolute left-6 md:w-60 lg:w-70">
+    <img src="imgs/Group 135.png" alt="Market icon" class="relative left-[65rem] hidden lg:inline z-12">
+
+    <nav>
+      <ul
+        class="list-none relative right-10 gap-18 font-bold text-3xl font-[Inter] hidden md:flex top-10 lg:flex top-4">
+        <li><a href="Guide.html">Guide</a></li>
+        <li><a href="Market.html">Market</a></li>
+        <li class="relative text-5xl bottom-4"><a href="#Play.html">PLAY</a></li>
+        <li><a href="My-Deck.html">My Deck</a></li>
+        <li><a href="Favorites.html">Favorites</a></li>
+      </ul>
+    </nav>
+
+    <div class="absolute h-100 w-150 bg-black/15 backdrop-blur-sm border-white border-2 rounded-[2rem] right-30 top-12 z-2">
+      <button id="order" class="absolute bg-gred font-press-start text-xs bottom-12 left-45 pl-4 pr-4 pt-2 pb-2 rounded-md">
+        Order
+      </button>
+
+      <button id="cancel" class="absolute bg-gred font-press-start text-xs bottom-12 left-80 pl-4 pr-4 pt-2 pb-2 rounded-md">
+        Cancel
+      </button>
+
+      <p class="absolute bottom-25 right-80 text-white font-GoldM">
+        Total:
+      </p>
+      <p id="total" class="absolute bottom-25 right-65 text-white font-GoldM">
+        0$
+      </p>
+    </div>
+  </header>
+
+
+
+
+
+  <main class="relative top-30">
+
+    <!-- desktop-nav -->
+     <nav class="z-0">
+      <div class="relative grow-0 gap-[2rem] justify-center overflow-scroll [scrollbar-width:none] w-[100%] hidden md:flex ">
+        <button class="text-gred font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full transition duration-300 ease-in-out hover:bg-gred hover:text-white">
+          Mythic
+        </button>
+        <button class="text-legendary font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full transition duration-300 ease-in-out hover:bg-legendary hover:text-white"">
+          legendary
+        </button>
+        <button class="text-rare font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full transition duration-300 ease-in-out hover:bg-rare hover:text-white">
+          Rare
+        </button>
+        <button class="text-uncommon font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full transition duration-300 ease-in-out hover:bg-uncommon hover:text-white">
+          Uncommon
+        </button>
+        <button class="text-common font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full transition duration-300 ease-in-out hover:bg-common hover:text-white">
+          Common
+        </button>
+    </nav>
+
+    <!-- Mobile-nav -->
+
+    <nav>
+      <div class="relative flex grow-0 gap-[3rem] overflow-scroll [scrollbar-width:none] w-[23rem] left-12 md:hidden">
+        <button class="text-gred font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+          Mythic
+        </button>
+        <button class="text-legendary font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+          legendary
+        </button>
+        <button class="text-rare font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+          Rare
+        </button>
+        <button class="text-uncommon font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+          Uncommon
+        </button>
+        <button class="text-common font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+          Common
+        </button>
+    </nav>
+
+    <div class="flex justify-center items-end w-[90vw] h-120">
+      <img class="relative  grayscale opacity-40" src="imgs/bg pika.png">
+    </div>
+
+    
+
+    <nav class="relative mt-12">
+      <div class="relative grow-0 gap-[5rem] justify-center overflow-scroll [scrollbar-width:none] w-[100%] hidden md:flex ">
+        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
+          <<
+        </button>
+        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
+          1
+        </button>
+        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
+          2
+        </button>
+        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
+          3
+        </button>
+        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
+          4
+        </button>
+        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
+          5
+        </button>
+        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
+          >>
+        </button>
+    </nav>
+
+
+  </main>
+
+  <footer>
+    <div class="relative flex flex-col flex-wrap items-center justify-between mt-80">
+      <div class="relative flex flex-col items-center">
+        <img src="imgs/Group 76.png" alt="footer image" class="relative top-16 w-55">
+        <p class="relative w-60 text-center text-white text-sm font-[Poppins] font-sans font-medium ">
+          Bring your favorite deck card to life with just two clicks and your imagination
+        </p>
+      </div>
+
+      <img src="imgs/Line 10.png" alt="line..." class="relative top-15 hidden">
+
+      <div class="relative flex flex-row gap-12 h-55 mt-12">
+        <div class="relative mt-8">
+          <h2 class="relative text-sm font-bold text-[#F0D43A] bottom-8 ">
+            Game things
+          </h2>
+          <ul class="flex flex-col gap-3 text-white font-medium text-md">
+            <li><a href="#">
+                How to play
+              </a></li>
+
+            <li><a href="#">
+                Devs
+              </a></li>
+
+            <li><a href="#">
+                Mobile App
+              </a></li>
+          </ul>
+        </div>
+
+        <img src="imgs/Line 10.png" alt="line..." class="relative top-15 hidden">
+
+        <div class="relative  mt-8">
+          <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
+            Contact
+          </h2>
+          <ul class="flex flex-col gap-3 text-white font-medium text-sm">
+            <li><a href="#">
+                Help/FAQ
+              </a></li>
+
+            <li><a href="#">
+                Contact
+              </a></li>
+
+            <li><a href="#">
+                Address
+              </a></li>
+          </ul>
+        </div>
+
+        <img src="imgs/Line 10.png" alt="line..." class="relative  top-15 hidden">
+
+        <div class="relative mt-8">
+          <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
+            More
+          </h2>
+          <ul class="flex flex-col gap-3 text-white font-medium text-sm">
+            <li><a href="#">
+                About Pokemon
+              </a></li>
+
+            <li><a href="#">
+                Privacy Policies
+              </a></li>
+
+            <li><a href="#">
+                Get your plushy!
+              </a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-white mb-3 bottom-12">
+        All rights reserved@genZdevs.co
+      </p>
+    </div>
+
+  </footer>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'press-start': ['"Press Start 2P"', 'cursive'],
+            'K2D': ['"K2D"', 'cursive'],
+            'GoldM': ['"Goldman"', 'cursive'],
+          },
+          colors: {
+            red: '#A63348',
+            magenta: '#5F425F',
+            blue: '#3B4A6B',
+            cyan: '#1B7C97',
+            myblue: '#3B4A6B',
+            gred: '#FF0000',
+            legendary: '#FFD400',
+            rare: '#0C0091',
+            uncommon: '#00FF11',
+            common: '#FFFFFF',
+            tblue: '#1F2937',
+            grey: '#6B7280',
+            gblue: '#374151',
+            stroke: '#4B5563',
+            underbg: '#E5E7EB',
+            grayish: '#374151',
+          }
+        }
+      }
+    }
+  </script>
+
+  <aside>
+    <h1>helloafjafefwesef</h1>
+  </aside>
+
+
+
+
+</body>
+
+</html>

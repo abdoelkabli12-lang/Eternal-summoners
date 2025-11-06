@@ -1,0 +1,105 @@
+cards.forEach((card, i) => {
+          
+          const bgDiv = document.getElementById(`${card.ind}-${i}`);
+          
+          
+          
+          if(card.ind === 1) {
+            bgDiv.classList.add('common');
+          }
+          
+          else if(card.ind === 2) {
+            bgDiv.classList.add('uncommon');
+          }
+          
+          else if(card.ind === 3) {
+            bgDiv.classList.add('rare');
+          }
+          
+          else if(card.ind === 4) {
+            bgDiv.classList.add('legendary');
+          }
+          
+          else if(card.ind === 5) {
+            bgDiv.classList.add('mythic');
+          }
+        });
+        const mythicfilter = document.getElementById("Mythic");
+        mythicfilter.addEventListener('click', () => {
+          const mythicCards = pokemonCards.filter(card => card.rarety === "mythic");
+          displayCards(mythicCards);
+          
+        });
+        
+        const legendfilter = document.getElementById("Legendary");
+        legendfilter.addEventListener('click', () => {
+          const legendCards = pokemonCards.filter(card => card.rarety === "legendary");
+          displayCards(legendCards);
+          
+        });
+        
+        const rarefilter = document.getElementById("Rare");
+        rarefilter.addEventListener('click', () => {
+          const rareCards = pokemonCards.filter(card => card.rarety === "rare");
+          displayCards(rareCards);
+          
+        });
+        
+        const uncfilter = document.getElementById("Uncommon");
+        uncfilter.addEventListener('click', () => {
+          const uncCards = pokemonCards.filter(card => card.rarety === "uncommon");
+          displayCards(uncCards);
+          
+        });
+        
+        const comfilter = document.getElementById("Common");
+        comfilter.addEventListener('click', () => {
+          const comCards = pokemonCards.filter(card => card.rarety === "common");
+          displayCards(comCards);
+          
+        }); 
+
+        document.addEventListener('DOMContentLoaded', (card) =>{
+          const favBTN = document.getElementById(`id-${card.number}`);
+          const cardId = card.name;
+
+          function getFav () {
+            const favorites = localStorage.getItem('favorites');
+            return favorites ? JSON.parse(favorites): [];
+          }
+
+          function saveFav (favorites) {
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+          }
+          function isFav(id) {
+          const favorites = getFav();
+          return favorites.includes(id);
+          }
+
+          function UpdBtnText() {
+        if (isFav(cardId)) {
+            favBTN.textContent = 'Remove from Favorites';
+        } else {
+            favBTN.textContent = 'Add to Favorites';
+        }
+        }
+
+        favBTN.addEventListener('click', ()=> {
+          let favorites = getFav();
+
+          if (isFav(cardId)) {
+            // Remove from favorites
+            favorites = favorites.filter(favId => favId !== cardId);
+            alert('Removed from favorites!');
+        } else {
+            // Add to favorites
+            favorites.push(cardId);
+            alert('Added to favorites!');
+        }
+        saveFav(favorites);
+        UpdBtnText(); // Update button text after action
+        });
+
+        UpdBtnText();
+        })
+  }

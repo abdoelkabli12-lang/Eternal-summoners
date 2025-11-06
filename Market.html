@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Lexend:wght@100..900&family=Press+Start+2P&family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,7 +25,7 @@
 <body class="bg-gradient-to-b from-red to-blue from-magenta to-cyan bg-no-repeat w-fill">
   <header class="relative flex justify-center items-start">
     <img src="imgs/Group 76.png" alt="logo" class="w-40 absolute left-6 md:w-60 lg:w-70">
-    <img src="imgs/Group 135.png" alt="Market icon" class="relative left-[65rem] hidden md:inline">
+    <img src="imgs/Group 135.png" alt="Market icon" class="relative left-[65rem] hidden md:inline z-1001">
 
     <nav>
       <ul
@@ -33,9 +34,27 @@
         <li><a href="Market.html">Market</a></li>
         <li class="relative text-5xl bottom-4"><a href="#Play.html">PLAY</a></li>
         <li><a href="My-Deck.html">My Deck</a></li>
-        <li><a href="">Favorites</a></li>
+        <li><a href="Favorites.html">Favorites</a></li>
       </ul>
     </nav>
+
+    <div class="absolute h-100 w-150 bg-black/15 backdrop-blur-sm border-white border-2 rounded-[2rem] right-30 top-12 z-1000 hidden md:inline">
+      <div id="cart-container" class="flex overflow-scroll gap-30 [scrollbar-width:none]">
+      <button id="order" class="absolute bg-gred font-press-start text-xs bottom-12 left-45 pl-4 pr-4 pt-2 pb-2 rounded-md">
+        Order
+      </button>
+
+      <button id="cancel" class="absolute bg-gred font-press-start text-xs bottom-12 left-80 pl-4 pr-4 pt-2 pb-2 rounded-md">
+        Cancel
+      </button>
+
+      <p class="absolute bottom-25 right-80 text-white font-GoldM">
+        Total:
+      </p>
+      <p id="total" class="absolute bottom-25 right-65 text-white font-GoldM">
+        0$
+      </p>
+    </div>
   </header>
 
 
@@ -47,241 +66,51 @@
     <!-- desktop-nav -->
      <nav>
       <div class="relative grow-0 gap-[2rem] justify-center overflow-scroll [scrollbar-width:none] w-[100%] hidden md:flex ">
-        <button class="text-gred font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+        <button id="Mythic" class="text-gred font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Mythic
         </button>
-        <button class="text-legendary font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+        <button id = "Legendary" class="text-legendary font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           legendary
         </button>
-        <button class="text-rare font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+        <button id="Rare" class="text-rare font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Rare
         </button>
-        <button class="text-uncommon font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+        <button id="Uncommon" class="text-uncommon font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Uncommon
         </button>
-        <button class="text-common font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+        <button id="Common" class="text-common font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Common
         </button>
     </nav>
 
+    <!-- mobile-nav -->
+
     <nav>
       <div class="relative flex grow-0 gap-[3rem] overflow-scroll [scrollbar-width:none] w-[23rem] md:hidden">
-        <button class="text-gred font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+        <button id="Mythic"  class="text-gred font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Mythic
         </button>
-        <button class="text-legendary font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+        <button id="Legendary" class="text-legendary font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           legendary
         </button>
-        <button class="text-rare font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+        <button id="Rare" class="text-rare font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Rare
         </button>
-        <button class="text-uncommon font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+        <button id="Uncommon" class="text-uncommon font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Uncommon
         </button>
-        <button class="text-common font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+        <button id="Common" class="text-common font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Common
         </button>
     </nav>
 
     <section class="relative grid justify-items-center mt-12">
 
-    <div class="relative grid md:grid-cols-3 gap-12 justify-items-center ml-2">
-      <div class="w-60">
-      <div class="relative w-60 h-90 border-stroke border-8 rounded-lg">
-        <div class="absolute bg-underbg [z-index:-1] h-70 w-[14rem] top-16">
-        </div>
+    <div id="card-container" class="relative grid md:grid-cols-3 gap-12 justify-items-center ml-2">
+      
 
 
-        <div class="">
-          <div
-            class="absolute flex items-center justify-center z-100 w-10 h-10 bg-gblue right-3 top-2 rounded-full md:h-15 w-15">
-            <p id="number" class="text-white font-semibold text-[18px] text-center md:text-[20px]">
-              001
-            </p>
-          </div>
-
-
-
-          <img src="imgs/image.png" id="image" class="relative w-[14rem]">
-
-          <img src="imgs/Ellipse 1.png" class="absolute left-26 top-39 z-12 w-30">
-          <img src="imgs/Ellipse 2.png" class="absolute left-1 top-[15rem] z-12 w-30">
-          <div class="relative grid grid-cols-2  grid-rows-1 top-5 right-3">
-
-
-            <p id="name" class="font-extrabold font-[Inter] text-lg text-center text-tblue">
-              <span>Pikachu</span>
-            </p>
-
-
-            <p id="types.0"
-              class="relative bg-grayish text-white font-bold font-[Inter] text-sm text-center rounded-full pt-1 pb-1 w-16 right-3">
-              <span>Electric</span>
-            </p>
-          </div>
-
-          <p id="classification" class="relative text-grey text-sm ml-3 font-[Inter] font-medium top-5">
-            Mouse pokemon
-          </p>
-          <div class="relative flex gap-1 ml-3 top-7 text-center">
-            <p id="maxHP" class="bg-white inline pt-1 pl-2 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">HP
-              <span class="font-bold">887</span>
-            </p>
-
-            <p id="maxCP" class="bg-white inline pt-1 pl-2 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">CP
-              <span class="font-bold">777</span>
-            </p>
-
-            <p id="height.maximum"
-              class="bg-white inline pt-1 pl-2 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">W
-              <span class="font-bold">0.45m</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="relative left-3 mt-7 font-bold">
-
-          <p id="resistant.0" class="bg-white inline rounded-[5px] font-[Inter] text-xs text-blue pt-1 pl-4 pb-1 pr-1">
-            <img src="imgs/shield.png" class="absolute w-4 top-[5px]"> Electric
-          </p>
-
-          <p id="resistant.1"
-            class="relative bg-white inline pt-1 pl-4 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">
-            <img src="imgs/shield.png" class="absolute inline right-[41px] w-4 top-[3px]"> Flying
-          </p>
-
-          <p id="weaknesses.0"
-            class="relative bg-white inline pt-1 pl-4 pb-1 pr-2 rounded-[5px] font-[Inter] text-xs text-blue">
-            <img src="imgs/shield.png" class="absolute inline right-[50px] w-4 top-[3px]" > Ground
-          </p>
-        </div>
-
-      </div>
-
-      <div class="relative left-2 top-2">
-        <button class="bg-black text-white font-GoldM p-2 rounded-xl w-25">
-          Favorites
-        </button>
-        <button class="bg-black text-white font-GoldM p-2 rounded-xl">
-          Add to Cart
-        </button>
-      </div>
-
-      <div class="text-lg font-GoldM text-white">
-        <span><p class="flex justify-center w-55 mt-2">
-          1/1
-        </p></span>
-
-        <span><p class="relative text-center">
-          It's small but his speed is great
-        </p></span>
-
-        <span><p class="flex justify-center w-55 font-bold mt-6">
-          100$
-        </p></span>
-      </div>
-
-      </div>
-
-
-      <div class="w-60">
-      <div class="relative w-60 h-90 border-stroke border-8 rounded-lg">
-        <div class="absolute bg-underbg [z-index:-1] h-70 w-[14rem] top-16">
-        </div>
-
-
-        <div class="">
-          <div
-            class="absolute flex items-center justify-center z-100 w-10 h-10 bg-gblue right-3 top-2 rounded-full md:h-15 w-15">
-            <p id="number" class="text-white font-semibold text-[18px] text-center md:text-[20px]">
-              001
-            </p>
-          </div>
-
-
-
-          <img src="imgs/image.png" id="image" class="relative w-[14rem]">
-
-          <img src="imgs/Ellipse 1.png" class="absolute left-26 top-39 z-12 w-30">
-          <img src="imgs/Ellipse 2.png" class="absolute left-1 top-[15rem] z-12 w-30">
-          <div class="relative grid grid-cols-2  grid-rows-1 top-5 right-3">
-
-
-            <p id="name" class="font-extrabold font-[Inter] text-lg text-center text-tblue">
-              <span>Pikachu</span>
-            </p>
-
-
-            <p id="types.0"
-              class="relative bg-grayish text-white font-bold font-[Inter] text-sm text-center rounded-full pt-1 pb-1 w-16 right-3">
-              <span>Electric</span>
-            </p>
-          </div>
-
-          <p id="classification" class="relative text-grey text-sm ml-3 font-[Inter] font-medium top-5">
-            Mouse pokemon
-          </p>
-          <div class="relative flex gap-1 ml-3 top-7 text-center">
-            <p id="maxHP" class="bg-white inline pt-1 pl-2 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">HP
-              <span class="font-bold">887</span>
-            </p>
-
-            <p id="maxCP" class="bg-white inline pt-1 pl-2 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">CP
-              <span class="font-bold">777</span>
-            </p>
-
-            <p id="height.maximum"
-              class="bg-white inline pt-1 pl-2 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">W
-              <span class="font-bold">0.45m</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="relative left-3 mt-7 font-bold">
-
-          <p id="resistant.0" class="bg-white inline rounded-[5px] font-[Inter] text-xs text-blue pt-1 pl-4 pb-1 pr-1">
-            <img src="imgs/shield.png" class="absolute w-4 top-[5px]"> Electric
-          </p>
-
-          <p id="resistant.1"
-            class="relative bg-white inline pt-1 pl-4 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">
-            <img src="imgs/shield.png" class="absolute inline right-[41px] w-4 top-[3px]"> Flying
-          </p>
-
-          <p id="weaknesses.0"
-            class="relative bg-white inline pt-1 pl-4 pb-1 pr-2 rounded-[5px] font-[Inter] text-xs text-blue">
-            <img src="imgs/shield.png" class="absolute inline right-[50px] w-4 top-[3px]" > Ground
-          </p>
-        </div>
-
-      </div>
-
-      <div class="relative left-2 top-2">
-        <button class="bg-black text-white font-GoldM p-2 rounded-xl w-25">
-          Favorites
-        </button>
-        <button class="bg-black text-white font-GoldM p-2 rounded-xl">
-          Add to Cart
-        </button>
-      </div>
-
-      <div class="text-lg font-GoldM text-white">
-        <span><p class="flex justify-center w-55 mt-2">
-          1/1
-        </p></span>
-
-        <span><p class="relative text-center">
-          It's small but his speed is great
-        </p></span>
-
-        <span><p class="flex justify-center w-55 font-bold mt-6">
-          100$
-        </p></span>
-      </div>
-
-      </div>
-
-      <div class="w-60">
+      <!-- <div class="w-60">
       <div class="relative w-60 h-90 border-stroke border-8 rounded-lg">
         <div class="absolute bg-underbg [z-index:-1] h-70 w-[14rem] top-16">
         </div>
@@ -960,7 +789,105 @@
 
       </div>
 
-  </div>
+      <div class="w-60">
+      <div class="relative w-60 h-90 border-stroke border-8 rounded-lg">
+        <div class="absolute bg-underbg [z-index:-1] h-70 w-[14rem] top-16">
+        </div>
+
+
+        <div class="">
+          <div
+            class="absolute flex items-center justify-center z-100 w-10 h-10 bg-gblue right-3 top-2 rounded-full md:h-15 w-15">
+            <p id="number" class="text-white font-semibold text-[18px] text-center md:text-[20px]">
+              001
+            </p>
+          </div>
+
+
+
+          <img src="imgs/image.png" id="image" class="relative w-[14rem]">
+
+          <img src="imgs/Ellipse 1.png" class="absolute left-26 top-39 z-12 w-30">
+          <img src="imgs/Ellipse 2.png" class="absolute left-1 top-[15rem] z-12 w-30">
+          <div class="relative grid grid-cols-2  grid-rows-1 top-5 right-3">
+
+
+            <p id="name" class="font-extrabold font-[Inter] text-lg text-center text-tblue">
+              <span>Pikachu</span>
+            </p>
+
+
+            <p id="types.0"
+              class="relative bg-grayish text-white font-bold font-[Inter] text-sm text-center rounded-full pt-1 pb-1 w-16 right-3">
+              <span>Electric</span>
+            </p>
+          </div>
+
+          <p id="classification" class="relative text-grey text-sm ml-3 font-[Inter] font-medium top-5">
+            Mouse pokemon
+          </p>
+          <div class="relative flex gap-1 ml-3 top-7 text-center">
+            <p id="maxHP" class="bg-white inline pt-1 pl-2 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">HP
+              <span class="font-bold">887</span>
+            </p>
+
+            <p id="maxCP" class="bg-white inline pt-1 pl-2 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">CP
+              <span class="font-bold">777</span>
+            </p>
+
+            <p id="height.maximum"
+              class="bg-white inline pt-1 pl-2 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">W
+              <span class="font-bold">0.45m</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="relative left-3 mt-7 font-bold">
+
+          <p id="resistant.0" class="bg-white inline rounded-[5px] font-[Inter] text-xs text-blue pt-1 pl-4 pb-1 pr-1">
+            <img src="imgs/shield.png" class="absolute w-4 top-[5px]"> Electric
+          </p>
+
+          <p id="resistant.1"
+            class="relative bg-white inline pt-1 pl-4 pb-1 pr-1 rounded-[5px] font-[Inter] text-xs text-blue">
+            <img src="imgs/shield.png" class="absolute inline right-[41px] w-4 top-[3px]"> Flying
+          </p>
+
+          <p id="weaknesses.0"
+            class="relative bg-white inline pt-1 pl-4 pb-1 pr-2 rounded-[5px] font-[Inter] text-xs text-blue">
+            <img src="imgs/shield.png" class="absolute inline right-[50px] w-4 top-[3px]" > Ground
+          </p>
+        </div>
+
+      </div>
+
+      <div class="relative left-2 top-2">
+        <button class="bg-black text-white font-GoldM p-2 rounded-xl w-25">
+          Favorites
+        </button>
+        <button class="bg-black text-white font-GoldM p-2 rounded-xl">
+          Add to Cart
+        </button>
+      </div>
+
+      <div class="text-lg font-GoldM text-white">
+        <span><p class="flex justify-center w-55 mt-2">
+          1/1
+        </p></span>
+
+        <span><p class="relative text-center">
+          It's small but his speed is great
+        </p></span>
+
+        <span><p class="flex justify-center w-55 font-bold mt-6">
+          100$
+        </p></span>
+      </div>
+
+      </div> -->
+
+    </div>
+
     </section>
 
     <nav class="relative mt-12">
@@ -1104,6 +1031,8 @@
     }
   </script>
 
+  <script type="text/javascript" src="style.js"></script>
+  <script type="text/javascript" src="cart.js"></script>
 
 
 

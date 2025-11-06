@@ -1,28 +1,31 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const favcontainer = document.getElementById('fav-container');
+  const favorites = JSON.parse(localStorage.getItem('cards')) || [];
 
 
-let pokemonCards = [];
-const container = document.getElementById('card-container');
-const favCont = document.getElementById('fav-container');
 
 
 
-fetch('./pokemondata1.json')
-  .then (response => response.json())
-  .then (data => {
-    pokemonCards = data;
-    displayCards(data);
-  })
 
-  .catch (error => console.error('error in connecting with the server', error));
 
-  async function displayCards(cards) {
 
-    let html1 = '';
 
-    cards.forEach((card, i) => {
-      html1 += 
+function renderFavorites() {
+  const favorites = JSON.parse(localStorage.getItem('cards')) || [];
+  if (favorites.length === 0) {
+    favcontainer.innerHTML = `
+      <div class="flex flex-col items-center justify-center mt-20">
+        <img src="imgs/bg pika.png" class="w-60 opacity-50">
+        <p class="text-white text-2xl font-GoldM mt-4">No favorites yet!</p>
+      </div>
+    `;
+    return;
+  }
 
-       `<div class="w-60">
+  favcontainer.innerHTML = '';
+  favorites.forEach((card, i) => {
+    const cardHTML =`
+    <div class = "cd" class="w-60">
       <div id = "cont" class="relative w-60 h-90 border-stroke border-8 rounded-lg">
         <div id = ${card.ind}-${i} class="absolute bg-underbg -z-1 h-70 w-[14rem] top-16">
         </div>
@@ -93,10 +96,10 @@ fetch('./pokemondata1.json')
       </div>
 
       <div class="relative left-2 top-2">
-        <button id = "fav-${card.number}" class="bg-black text-white font-GoldM p-2 rounded-xl w-25">
-          Favorites
+        <button class = "remove-fav" id = "fav-${card.number}" data-number = "${card.number}" class="bg-black text-white font-GoldM p-2 rounded-xl w-25">
+          remove
         </button>
-        <button id = "cart-${card.number}" class="bg-black text-white font-GoldM p-2 rounded-xl">
+        <button id = "id-${i}" class="bg-black text-white font-GoldM p-2 rounded-xl">
           Add to Cart
         </button>
       </div>
@@ -116,91 +119,27 @@ fetch('./pokemondata1.json')
           </div>
           
           </div>`;
-          
-          
-        });
-        
-        container.innerHTML = html1;
-
-    cards.forEach((card, i) => {
-    const bgDiv = document.getElementById(`${card.ind}-${i}`);
-    const rarityClasses = ['common', 'uncommon', 'rare', 'legendary', 'mythic'];
-    bgDiv.classList.add(rarityClasses[card.ind - 1] || '');
+    favcontainer.innerHTML += cardHTML;
   });
-
-  cards.forEach(card => {
-    const favBtn = document.getElementById(`fav-${card.number}`);
-    if (!favBtn) return;
-
-    const cartBtn = document.getElementById(`cart-${card.number}`);
-    if(!cartBtn) return;
-
-    // const cardId = card.number;
-
-    // function getFavs() {
-    //   const favorites = localStorage.getItem('cards');
-    //   return favorites ? JSON.parse(favorites) : [];
-    // }
-
-    // function saveFavs(favorites) {
-    //   localStorage.setItem('cards', JSON.stringify(favorites));
-    // }
-
-
-
-
-    favBtn.addEventListener('click', () => {
-      let currentFavorites = JSON.parse(localStorage.getItem("cards")) || [];
-      const alreadyFav = currentFavorites.some(fav => fav.number === card.number);
-
-      if (alreadyFav) {
-        currentFavorites = currentFavorites.filter(fav => fav.number !== card.number);
-        favBtn.textContent = 'Favorites';
-      } else {
-        currentFavorites.push(card);
-        favBtn.textContent = 'Remove';
-      }
-
-      localStorage.setItem("cards", JSON.stringify(currentFavorites));
-    });
-
-
-    cartBtn.addEventListener('click', () => {
-      let currentCart = JSON.parse(localStorage.getItem("cards1")) || [];
-      const existing = currentCart.find(item => item.number === card.number);
-
-      if (existing) {
-        existing.quantity += 1; // Increment quantity if already in cart
-      } else {
-        currentCart.push({ ...card, quantity: 1, price: 100 }); // Add with quantity 1
-      }
-
-      localStorage.setItem("cards1", JSON.stringify(currentCart));
-    });
-
-
-  });
-
-  cardFilters();
 }
 
-function cardFilters() {
-  const filters = [
-    { id: "Mythic", type: "mythic" },
-    { id: "Legendary", type: "legendary" },
-    { id: "Rare", type: "rare" },
-    { id: "Uncommon", type: "uncommon" },
-    { id: "Common", type: "common" },
-  ];
+// Initial render
+renderFavorites();
 
-  filters.forEach(filter => {
-    const btn = document.getElementById(filter.id);
-    if (!btn) return;
-    btn.onclick = () => {
-      const filtered = pokemonCards.filter(cd => cd.rarety === filter.type);
-      displayCards(filtered);
-    };
-  });
-        
-      }
+// Event delegation for removing favorites
+favcontainer.addEventListener('click', (e) => {
+  if (e.target.classList.contains('remove-fav')) {
+    const number = e.target.dataset.number;
+    let favorites = JSON.parse(localStorage.getItem('cards')) || [];
+    favorites = favorites.filter(fav => fav.number !== number);
+    localStorage.setItem('cards', JSON.stringify(favorites));
+
+    // Re-render the list
+    renderFavorites();
+  }
+});
+
+})
+
+
 
