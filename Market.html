@@ -25,7 +25,7 @@
 <body class="bg-gradient-to-b from-red to-blue from-magenta to-cyan bg-no-repeat w-fill">
   <header class="relative flex justify-center items-start">
     <img src="imgs/Group 76.png" alt="logo" class="w-40 absolute left-6 md:w-60 lg:w-70">
-    <img src="imgs/Group 135.png" alt="Market icon" class="relative left-[65rem] hidden md:inline z-1001">
+    <img src="imgs/Group 135.png" id = "cart-icon" alt="Market icon" class="relative left-[65rem] hidden md:inline z-1001">
 
     <nav>
       <ul
@@ -38,7 +38,7 @@
       </ul>
     </nav>
 
-    <div class="absolute h-100 w-150 bg-black/15 backdrop-blur-sm border-white border-2 rounded-[2rem] right-30 top-12 z-1000 hidden md:inline">
+    <div id="cart" class="absolute h-100 w-150 bg-black/15 backdrop-blur-sm border-white border-2 rounded-[2rem] right-30 top-12 z-1000 hidden">
       <div id="cart-container" class="flex overflow-scroll gap-30 [scrollbar-width:none]">
       <button id="order" class="absolute bg-gred font-press-start text-xs bottom-12 left-45 pl-4 pr-4 pt-2 pb-2 rounded-md">
         Order
@@ -104,9 +104,9 @@
         </button>
     </nav>
 
-    <section class="relative grid justify-items-center mt-12">
+    <section class="relative grid  justify-items-center mt-12">
 
-    <div id="card-container" class="relative grid md:grid-cols-3 gap-12 justify-items-center ml-2">
+    <div id="card-container" class="relative grid md:grid-cols-3 gap-12  ml-2">
       
 
 
@@ -890,30 +890,7 @@
 
     </section>
 
-    <nav class="relative mt-12">
-      <div class="relative grow-0 gap-[5rem] justify-center overflow-scroll [scrollbar-width:none] w-[100%] hidden md:flex ">
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          <<
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          1
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          2
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          3
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          4
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          5
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          >>
-        </button>
-    </nav>
+    
 
 
   </main>
