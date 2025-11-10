@@ -1,37 +1,18 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const favcontainer = document.getElementById('fav-container');
-  const favorites = JSON.parse(localStorage.getItem('cards')) || [];
 
+  const myDeckContainer = document.getElementById('Myd-container');
+  const myDeck = JSON.parse(localStorage.getItem('cards1')) || [];
+  
   const cart = document.getElementById('cart-icon');
 
-cart.addEventListener('click', () => {
-  const cartElement = document.getElementById('cart');
 
-  if (cartElement.style.display === 'inline') {
-    cartElement.style.display = 'none';
-  } else {
-    cartElement.style.display = 'inline';
-  }
-});
 
-function renderFavorites() {
-  const favorites = JSON.parse(localStorage.getItem('cards')) || [];
-  if (favorites.length === 0) {
-    favcontainer.innerHTML = `
-      <div class="flex flex-col items-center justify-center mt-20">
-        <img src="imgs/bg pika.png" class="w-60 opacity-50">
-        <p class="text-white text-2xl font-GoldM mt-4">No favorites yet!</p>
-      </div>
-    `;
-    return;
-  }
-
-  favcontainer.innerHTML = '';
-  favorites.forEach((card, i) => {
+  function renderMyDeck() {
+  myDeckContainer.innerHTML = '';
+  myDeck.forEach((card, i) => {
     const cardHTML =`
     <div class = "cd" class="w-60">
       <div id = "cont" class="relative w-60 h-90 border-stroke border-8 rounded-lg">
-        <div id = "${card.ind}-${i}" class="absolute bg-underbg -z-1 h-70 w-[14rem] top-16">
+        <div id = ${card.ind}-${i} class="absolute bg-underbg -z-1 h-70 w-[14rem] top-16">
         </div>
 
 
@@ -101,10 +82,10 @@ function renderFavorites() {
 
       <div class="relative left-2 top-2">
         <button  id = "fav-${card.number}" data-number = "${card.number}" class="remove-fav bg-black text-white font-GoldM p-2 rounded-xl w-25">
-          remove
+          sell
         </button>
-        <button id = "cart-${card.number}" class="bg-black text-white font-GoldM p-2 rounded-xl">
-          Add to Cart
+        <button id = "id-${i}" class="bg-black text-white font-GoldM p-2 rounded-xl">
+          Favorites
         </button>
       </div>
 
@@ -123,70 +104,18 @@ function renderFavorites() {
           </div>
           
           </div>`;
-    favcontainer.innerHTML += cardHTML;
+    myDeckContainer.innerHTML += cardHTML;
   });
-  // Set rarity background color
-    favorites.forEach((card, i) => {
-      const bgDiv = document.getElementById(`${card.ind}-${i}`);
-      const rarityClasses = ['common', 'uncommon', 'rare', 'legendary', 'mythic'];
-      bgDiv.classList.add(rarityClasses[card.ind - 1] || '');
-    });
-    favorites.forEach(card => {
-      const favBtn = document.getElementById(`fav-${card.number}`);
-      const cartBtn = document.getElementById(`cart-${card.number}`);
-    
-    
-      favBtn.addEventListener('click', () => {
-        let currentFavorites = JSON.parse(localStorage.getItem('cards')) || [];
-        const alreadyFav = currentFavorites.some(fav => fav.number === card.number);
-    
-        if (alreadyFav) {
-          currentFavorites = currentFavorites.filter(fav => fav.number !== card.number);
-          favBtn.textContent = 'Favorites';
-          localStorage.setItem('cards', JSON.stringify(currentFavorites));
-        } else {
-          currentFavorites.push(card);
-          favBtn.innerHTML = 'Remove';
-          localStorage.setItem('cards', JSON.stringify(currentFavorites));
-        }
-    
-        localStorage.setItem('cards', JSON.stringify(currentFavorites));
-      });
 
-    
-      cartBtn.addEventListener('click', () => {
-        let currentCart = JSON.parse(localStorage.getItem('cards1')) || [];
-        const existing = currentCart.find(item => item.number === card.number);
-    
-        if (existing) {
-          existing.quantity += 1;
-        } else {
-          currentCart.push({ ...card, quantity: 1, price: 100 });
-        }
-    
-        localStorage.setItem('cards1', JSON.stringify(currentCart));
-      });
-    });
+  
 }
 
+renderMyDeck();
 
 
 
 
-renderFavorites();
 
-favcontainer.addEventListener('click', (e) => {
-  if (e.target.classList.contains('remove-fav')) {
-    const number = e.target.dataset.number;
-    let favorites = JSON.parse(localStorage.getItem('cards')) || [];
-    favorites = favorites.filter(fav => fav.number !== number);
-    localStorage.setItem('cards', JSON.stringify(favorites));
-
-    renderFavorites();
-  }
-});
-
-})
 
 
 

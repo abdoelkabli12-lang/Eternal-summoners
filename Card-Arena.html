@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang= "en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Lexend:wght@100..900&family=Press+Start+2P&family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css">
+
+    
+    <title>
+
+    </title>
+  </head>
+  <body class="bg-gradient-to-b from-red to-blue from-magenta to-cyan bg-no-repeat w-fill">
+
+    <div id = "card-arena" class="absolute grid left-9 gap-10 overflow-y-auto h-177 w-100">
+    </div>
+    <div>
+    <div class="relative left-56 h-[9.2rem] w-[85%] bg-red ">
+    </div>
+    <div class="relative grid  left-56 h-52 w-[85%] bg-blue  justify-center">
+      
+        <div class="relative flex gap-x-10 right-12">
+          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+        </div>
+
+    </div>
+    <div class="relative grid left-56 h-52 w-[75%] bg-magenta justify-center">
+      <div  class="relative flex gap-x-10 right-12">
+          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+      </div>
+    </div>
+    <div id = "mainHand" class="overflow-hidden flex justify-center gap-12 relative left-56 h-[9.1rem] w-[85%] bg-gblue ">
+    </div>
+    </div>
+
+
+
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'press-start': ['"Press Start 2P"', 'cursive'],
+            'K2D': ['"K2D"', 'cursive'],
+          },
+          colors: {
+            red: '#A63348',
+            magenta: '#5F425F',
+            blue: '#3B4A6B',
+            cyan: '#1B7C97',
+            myblue: '#3B4A6B',
+            gred: '#FF0000',
+            legendary: '#FFD400',
+            rare: '#0C0091',
+            uncommon: '#00FF11',
+            common: '#FFFFFF',
+            tblue: '#1F2937',
+            grey: '#6B7280',
+            gblue: '#374151',
+            stroke: '#4B5563',
+            underbg: '#E5E7EB',
+            grayish: '#374151',
+          }
+        }
+      }
+    }
+  </script>
+
+
+      <script type="text/javascript" src = "Card-Arena.js"></script>
+    
+  </body>
+</html>
