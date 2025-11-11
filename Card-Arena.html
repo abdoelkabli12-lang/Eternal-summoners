@@ -1,68 +1,98 @@
 <!DOCTYPE html>
-<html lang= "en">
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Lexend:wght@100..900&family=Press+Start+2P&family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="style.css">
+<html lang="en">
 
-    
-    <title>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Lexend:wght@100..900&family=Press+Start+2P&family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
 
-    </title>
-  </head>
-  <body class="bg-gradient-to-b from-red to-blue from-magenta to-cyan bg-no-repeat w-fill">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="style.css">
 
-    <div id = "card-arena" class="absolute grid left-9 gap-10 overflow-y-auto h-177 w-100">
+
+  <title>
+
+  </title>
+</head>
+
+<body class="bg-gradient-to-b from-red to-blue from-magenta to-cyan bg-no-repeat w-fill">
+  <div id="blur" class="hidden fixed inset-0 z-500 backdrop-filter backdrop-blur-sm"></div>
+
+  <div id="choose"
+    class="fixed hidden flex gap-25 justify-center items-end h-[16rem] w-[30rem] rounded-2xl bg-white/65 backdrop-blur-sm z-1000 left-[32rem] top-[15rem] ">
+    <img src="imgs/Pokeball.gif" class="absolute animate-bounce top-12 w-23">
+    <button id="def" class="bg-rare mb-12 h-12 pr-1 rounded-lg text-white font-GoldM hover:animate-pulse">
+      🛡️ Défense
+    </button>
+    <button id="atk" class="bg-lightred mb-12 h-12 pr-1 rounded-lg text-white font-GoldM hover:animate-pulse">
+      ⚔️ Attaque
+    </button>
+  </div>
+
+  <div id="card-arena" class="absolute grid left-9 gap-10 overflow-y-auto h-177 w-100">
+  </div>
+  <div>
+    <div class="relative left-56 h-[4rem] w-[70%] bg-red ">
+      <p class="font-bold text-white text-lg">
+        card()
+      </p>
     </div>
-    <div>
-    <div class="relative left-56 h-[9.2rem] w-[85%] bg-red ">
-    </div>
-    <div class="relative grid  left-56 h-52 w-[85%] bg-blue  justify-center">
-      
-        <div class="relative flex gap-x-10 right-12">
-          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
-          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
-          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
-          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
-          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
-        </div>
+    <div class="relative grid  left-56 h-52 w-[70%] bg-blue justify-center">
+
+      <div class="relative flex gap-x-10">
+        <div class="cards-2 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+        <div class="cards-2 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+        <div class="cards-2 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+        <div class="cards-2 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+        <div class="cards-2 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+      </div>
 
     </div>
-    <div class="relative grid left-56 h-52 w-[75%] bg-magenta justify-center">
-      <div  class="relative flex gap-x-10 right-12">
-          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
-          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
-          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
-          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
-          <div class= "cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+    <div class="relative grid left-56 h-52 w-[70%] bg-magenta justify-center">
+      <div class="relative flex gap-x-10">
+        <div class="cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+        <div class="cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+        <div class="cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+        <div class="cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
+        <div class="cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
       </div>
     </div>
-    <div id = "mainHand" class="overflow-hidden flex justify-center gap-12 relative left-56 h-[9.1rem] w-[85%] bg-gblue ">
+    <div id="mainHand"
+      class="overflow-hidden flex justify-center gap-12 relative left-56 h-[14.3rem] w-[70%] bg-gblue ">
     </div>
-    </div>
+
+  </div>
+  <div class="absolute flex justify-center items-center right-0 border-3 border-white bottom-[1px] bg-black w-[15%] h-[100vh]">
+    <button id="endturn" class="absolute text-black pl-6 pr-6 rounded-lg bg-yellow font-GoldM text-lg cursor-not-allowed" disabled>
+      End Turn
+    </button>
+  </div>
 
 
 
 
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
             'press-start': ['"Press Start 2P"', 'cursive'],
             'K2D': ['"K2D"', 'cursive'],
+            'GoldM': ['"Goldman"', 'cursive'],
           },
           colors: {
+            green: '#54b550',
+            yellow: '#fff00d',
             red: '#A63348',
             magenta: '#5F425F',
             blue: '#3B4A6B',
@@ -79,14 +109,36 @@
             stroke: '#4B5563',
             underbg: '#E5E7EB',
             grayish: '#374151',
-          }
-        }
+            lightred: '#c21500',
+          },
+          animation: {
+            'scale-in': 'scale-in 2s ease-in 2s infinite',
+            'scale-out': 'scale-out 2s ease-out 2s infinite',
+            'rotate': 'rotate 0.1s ease-in forwards',
+          },
+          keyframes: {
+            'scale-in': {
+              '0%': { transform: 'scale(0.5)' },
+              '100%': { transform: 'scale(1)' },
+            },
+            'scale-out': {
+              '0%': { transform: 'scale(1)' },
+              '100%': { transform: 'scale(0.5)' },
+            },
+            'rotate': {
+              '0%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(-90deg)' },
+            }
+          },
+        },
       }
     }
+
   </script>
 
 
-      <script type="text/javascript" src = "Card-Arena.js"></script>
-    
-  </body>
+  <script type="text/javascript" src="Card-Arena.js"></script>
+
+</body>
+
 </html>

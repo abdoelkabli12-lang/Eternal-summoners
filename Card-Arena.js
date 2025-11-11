@@ -1,22 +1,22 @@
 const cardsContainer = document.getElementById("card-arena");
 const myCards = JSON.parse(localStorage.getItem('cards1')) || [];
 const Cards1 = document.querySelectorAll(".cards-1");
-const Cards2 = document.querySelectorAll("cards-2");
+const Cards2 = document.querySelectorAll(".cards-2");
+const endTurn = document.getElementById("endturn")
 
 
-function renderCards() {
-  let draggedItem = null;
-  myCards.forEach((card, i, count) => {
-    const cardHTML = document.createElement('div');
-    cardHTML.className = "relative w-40 h-60 border-stroke border-8 rounded-lg";
-    cardHTML.setAttribute("draggable", "true");
-    count++;
-    cardHTML.innerHTML = `
-      <div id = "cont" >
+
+
+let draggedItem = null;
+myCards.forEach((card, i) => {
+  const cardHTML = document.createElement('div');
+  cardHTML.className = "relative w-40 h-60 border-stroke border-8 rounded-lg";
+  cardHTML.setAttribute("draggable", "true");
+  cardHTML.id = `cont-${i}`
+  cardHTML.innerHTML = `
+      <div class = "cont">
         <div id = ${card.ind} class="absolute bg-underbg -z-1 h-56 w-[9rem] top-0">
         </div>
-
-
         <div class="">
           <div class="absolute flex items-center justify-center z-100 w-7 h-7 bg-gblue right-3 top-2 rounded-full md:h-15 w-15">
             <p class="text-white font-semibold text-[10px] text-center md:text-[10px]">
@@ -76,60 +76,111 @@ function renderCards() {
             <img src="imgs/shield.png" class="absolute w-2 left-20 top-[11px]"> ${card.weaknesses[0]}
           </p>
         </div>
-
-
 `;
 
-    cardsContainer.appendChild(cardHTML);
+  cardsContainer.appendChild(cardHTML);
 
-    const mainHub = document.getElementById('mainHand');
 
-    const bgDiv = document.getElementById(`${card.ind}`);
-    const rarityClasses = ['common', 'uncommon', 'rare', 'legendary', 'mythic'];
-    bgDiv.classList.add(rarityClasses[card.ind - 1] || '');
+  const bgDiv = document.getElementById(`${card.ind}`);
+  const rarityClasses = ['common', 'uncommon', 'rare', 'legendary', 'mythic'];
+  bgDiv.classList.add(rarityClasses[card.ind - 1] || '');
 
-    cardHTML.addEventListener('dragstart', (e) => {
-      draggedItem = e.target;
-      cardHTML.classList.add('opacity-[0.5]');
-    })
-    cardHTML.addEventListener('dragend', () => {
-      cardHTML.classList.remove('opacity-[0.5]');
-    })
+  cardHTML.addEventListener('dragstart', (e) => {
+    draggedItem = cardHTML;
+    cardHTML.classList.add('opacity-[0.5]');
+  })
+  cardHTML.addEventListener('dragend', () => {
+    cardHTML.classList.remove('opacity-[0.5]');
+  })
 
-    mainHub.addEventListener('drop', (e) => {
-      e.preventDefault();
-      if (draggedItem) {
-        draggedItem = null; // Clear the reference
-      }
-    });
-    mainHub.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      mainHub.appendChild(draggedItem);
-      
-    })
-    
-    Cards1.forEach((card) =>{
-      card.addEventListener('drop', (e) => {
-        if (draggedItem) {
-        }
-      });
-      card.addEventListener('dragover', (e) => {
-        card.appendChild(draggedItem);
-        localStorage.setItem('mainHand');
-      })
-    })
-    const maindivs = mainHub.getElementsByTagName('div');
-    if(maindivs.length == 5){
-      alert("hello");
+});
+
+const mainHub = document.getElementById('mainHand');
+
+mainHub.addEventListener('drop', (e) => {
+  console.log("dropped")
+  e.preventDefault();
+
+  if (draggedItem) {
+    if (mainHub.children.length > 4) {
+      return alert('hhhhh');
     }
+    mainHub.appendChild(draggedItem);
+
+  }
+});
+
+mainHub.addEventListener('dragover', (e) => {
+  e.preventDefault();
+
+})
+const usedIndices = [];
+Cards1.forEach((card) => {
+  const blur = document.getElementById("blur");
+  const choose = document.getElementById("choose");
+  const def = document.getElementById("def");
+  const atk = document.getElementById("atk");
+  card.addEventListener('dragover', (e) => {
+    e.preventDefault();
+  })
+  card.addEventListener('drop', () => {
+    if (card.children.length > 0) {
+      alert("you can't add more than 1 card in the same place...");
+      return;
+    }
+    else {
+      draggedItem.setAttribute("draggable", "false");
+      blur.className = "fixed inset-0 z-500 backdrop-filter backdrop-blur-sm";
+      choose.className = "fixed flex gap-25 justify-center items-end h-[16rem] w-[30rem] rounded-2xl bg-white/65 backdrop-blur-sm z-1000 left-[32rem] top-[15rem]";
+    }
+    def.addEventListener('click', () => {
+      const trigg = true;
+      if(trigg){
+      endTurn.removeAttribute("disabald");
+      endTurn.classList.remove('cursor-not-allowed');
+      endTurn.classList.add('active:opacity-50');
+      }
+
+      blur.className = "hidden fixed inset-0 z-500 backdrop-filter backdrop-blur-sm";
+      choose.className = "fixed hidden flex gap-25 justify-center items-end h-[16rem] w-[30rem] rounded-2xl bg-white/65 backdrop-blur-sm z-1000 left-[32rem] top-[15rem]";
+      draggedItem.classList.add("animate-rotate");
+      card.appendChild(draggedItem);
+
+    })
+
+    atk.addEventListener('click', (e) => {
+      const trigg = true;
+      if(trigg){
+      endTurn.removeAttribute("disabald");
+      endTurn.classList.remove('cursor-not-allowed');
+      endTurn.classList.add('active:opacity-50');
+      }
+      draggedItem.setAttribute("draggable", "false");
+      draggedItem.classList.remove("animate-rotate");
+      blur.className = "hidden fixed inset-0 z-500 backdrop-filter backdrop-blur-sm";
+      choose.className = "fixed hidden flex gap-25 justify-center items-end h-[16rem] w-[30rem] rounded-2xl bg-white/65 backdrop-blur-sm z-1000 left-[32rem] top-[15rem]";
+      card.appendChild(draggedItem);
+      
+
+      endTurn.addEventListener('click', () => {
+        Cards2.forEach(card2 => {
+          if (card2.children.length === 0) {
+            let rand;
+            do {
+              rand = Math.floor(Math.random() * myCards.length);
+            } while (usedIndices.includes(rand) && usedIndices.length < myCards.length);
+            if (usedIndices.length >= myCards.length) return;
+            usedIndices.push(rand);
+            const randomCard = document.getElementById(`cont-${rand}`);
+            if (randomCard) {
+              const clone = randomCard.cloneNode(true);
+              card2.appendChild(randomCard);
+            }
+          }
+        });
+    })
+    })
+
   });
-  
-  
+})
 
-
-  
-  
-}
-
-
-renderCards();
