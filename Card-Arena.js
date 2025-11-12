@@ -134,13 +134,6 @@ Cards1.forEach((card) => {
       choose.className = "fixed flex gap-25 justify-center items-end h-[16rem] w-[30rem] rounded-2xl bg-white/65 backdrop-blur-sm z-1000 left-[32rem] top-[15rem]";
     }
     def.addEventListener('click', () => {
-      const trigg = true;
-      if(trigg){
-      endTurn.removeAttribute("disabald");
-      endTurn.classList.remove('cursor-not-allowed');
-      endTurn.classList.add('active:opacity-50');
-      }
-
       blur.className = "hidden fixed inset-0 z-500 backdrop-filter backdrop-blur-sm";
       choose.className = "fixed hidden flex gap-25 justify-center items-end h-[16rem] w-[30rem] rounded-2xl bg-white/65 backdrop-blur-sm z-1000 left-[32rem] top-[15rem]";
       draggedItem.classList.add("animate-rotate");
@@ -148,39 +141,57 @@ Cards1.forEach((card) => {
 
     })
 
-    atk.addEventListener('click', (e) => {
-      const trigg = true;
-      if(trigg){
-      endTurn.removeAttribute("disabald");
-      endTurn.classList.remove('cursor-not-allowed');
-      endTurn.classList.add('active:opacity-50');
-      }
+    atk.addEventListener('click', () => {
       draggedItem.setAttribute("draggable", "false");
       draggedItem.classList.remove("animate-rotate");
       blur.className = "hidden fixed inset-0 z-500 backdrop-filter backdrop-blur-sm";
       choose.className = "fixed hidden flex gap-25 justify-center items-end h-[16rem] w-[30rem] rounded-2xl bg-white/65 backdrop-blur-sm z-1000 left-[32rem] top-[15rem]";
       card.appendChild(draggedItem);
-      
-
-      endTurn.addEventListener('click', () => {
-        Cards2.forEach(card2 => {
-          if (card2.children.length === 0) {
-            let rand;
-            do {
-              rand = Math.floor(Math.random() * myCards.length);
-            } while (usedIndices.includes(rand) && usedIndices.length < myCards.length);
-            if (usedIndices.length >= myCards.length) return;
-            usedIndices.push(rand);
-            const randomCard = document.getElementById(`cont-${rand}`);
-            if (randomCard) {
-              const clone = randomCard.cloneNode(true);
-              card2.appendChild(randomCard);
-            }
-          }
-        });
-    })
+      endTurn.removeAttribute("disabled");
+      endTurn.classList.remove('cursor-not-allowed');
+      endTurn.classList.add('active:opacity-50');
     })
 
   });
 })
+  endTurn.addEventListener('click', () => {
+    
+      endTurn.setAttribute("disabled");
+      endTurn.classList.add('cursor-not-allowed');
+      endTurn.classList.remove('active:opacity-50');
+      const emptySlots = Array.from(Cards2).filter(c => c.children.length === 0);
+      console.log(emptySlots);
+  
+      // if (emptySlots.length === 0) {
+      //   console.log("No empty slots left.");
+      //   return;
+      // }
+  
+      const randomContainer = emptySlots[Math.floor(Math.random() * emptySlots.length)];
+  
+      let rand;
+      do {
+        rand = Math.floor(Math.random() * myCards.length);
+      } while (usedIndices.includes(rand) && usedIndices.length < myCards.length);
+  
+      if (usedIndices.length >= myCards.length) {
+        console.log("No more cards available to clone.");
+        return;
+      }
+  
+      usedIndices.push(rand);
+  
+      const randomCard = document.getElementById(`cont-${rand}`);
+      if (!randomCard) {
+        console.warn(`Card with id cont-${rand} not found.`);
+        return;
+      }
+  
+      const clone = randomCard.cloneNode(true);
+      clone.setAttribute("draggable", "false");
+  
+      randomContainer.appendChild(clone);
+  });
+
+
 
