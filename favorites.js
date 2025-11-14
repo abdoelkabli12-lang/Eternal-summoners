@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentFavorites = JSON.parse(localStorage.getItem('cards')) || [];
   const cart = document.getElementById('cart');
 
-  // 🛒 Toggle cart visibility
   cart.addEventListener('click', () => {
     if (cart.style.display === 'inline') {
       cart.style.display = 'none';
@@ -183,15 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
-
-
-
-
-
-
-
-
 
 
   displayCards(currentFavorites, currentPage);

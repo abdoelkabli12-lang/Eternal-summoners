@@ -16,6 +16,16 @@ function calculateTotal(cards) {
 function displayCards(cards = myDeck, page = 1) {
   myDeck = JSON.parse(localStorage.getItem("cards1")) || [];
 
+      if (myDeck.length === 0) {
+      myDeckContainer.innerHTML = `
+        <div class="relative flex flex-col items-center justify-center">
+          <img src="imgs/bg pika.png" class="w-60 opacity-50">
+          <p class="text-white text-2xl font-GoldM mt-4">No favorites yet!</p>
+        </div>`;
+      updatePaginationControls([]);
+      return;
+    }
+
   const totalPages = calculateTotal(cards);
   if (page < 1) page = 1;
   if (page > totalPages) page = totalPages;

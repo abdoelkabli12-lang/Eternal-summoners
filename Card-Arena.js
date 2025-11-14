@@ -12,6 +12,7 @@ let click = 0;
 let draggedItem = null;
 let enemysCard = 5;
 let playerCards = 0;
+let main = [];
 
 
 
@@ -23,7 +24,8 @@ myCards.forEach((card, i) => {
   const cardHTML = document.createElement('div');
   cardHTML.className = "relative w-40 h-60 border-stroke border-8 rounded-lg";
   cardHTML.setAttribute("draggable", "true");
-  cardHTML.id = `cont-${i}`
+  cardHTML.id = `cont-${i}`;
+
   cardHTML.innerHTML = `
       <div class = "cont">
         <div id = ${card.ind} class="absolute bg-underbg -z-1 h-56 w-[9rem] top-0">
@@ -96,6 +98,7 @@ myCards.forEach((card, i) => {
   const rarityClasses = ['common', 'uncommon', 'rare', 'legendary', 'mythic'];
   bgDiv.classList.add(rarityClasses[card.ind - 1] || '');
 
+
   cardHTML.addEventListener('dragstart', (e) => {
     draggedItem = cardHTML;
     cardHTML.classList.add('opacity-[0.5]');
@@ -104,8 +107,39 @@ myCards.forEach((card, i) => {
     cardHTML.classList.remove('opacity-[0.5]');
   })
 
+
 });
 const mainHub = document.getElementById('mainHand');
+function initializeStartingHand() {
+  const chosenIndices = new Set();
+
+  while (chosenIndices.size < 5 && chosenIndices.size < myCards.length) {
+    chosenIndices.add(Math.floor(Math.random() * myCards.length));
+  }
+
+  chosenIndices.forEach(i => {
+    const card = document.getElementById(`cont-${i}`);
+    if (card) {
+      const clone = card.cloneNode(true);
+      clone.setAttribute("draggable", "true");
+
+      clone.addEventListener("dragstart", () => {
+        draggedItem = clone;
+        clone.classList.add("opacity-[0.5]");
+      });
+      clone.addEventListener("dragend", () => {
+        clone.classList.remove("opacity-[0.5]");
+      });
+
+      mainHub.appendChild(clone);
+    }
+  });
+
+  playerCards = mainHub.children.length;
+  player.innerHTML = `card(${playerCards}/5)`;
+}
+initializeStartingHand();
+
 
 mainHub.addEventListener('drop', (e) => {
   console.log("dropped")
@@ -113,7 +147,7 @@ mainHub.addEventListener('drop', (e) => {
 
   if (draggedItem) {
     if (mainHub.children.length > 4) {
-      return alert('hhhhh');
+      return alert("you can't add more than 5 cards in your hand");
     }
     mainHub.appendChild(draggedItem);
     playerCards = mainHub.children.length;
