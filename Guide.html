@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang= "en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Lexend:wght@100..900&family=Press+Start+2P&family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    
+    <title>
+
+    </title>
+  </head>
+  <body class="bg-gradient-to-b from-red to-blue from-magenta to-cyan bg-no-repeat w-fill">
+  <header class="relative flex justify-center items-start">
+    <img src="imgs/Group 76.png" alt="logo" class="w-40 absolute left-6 md:w-60 lg:w-70">
+    <img src="imgs/Group 135.png" id = "cart-icon" alt="Market icon" class="relative left-[65rem] hidden lg:inline z-1001">
+
+    <nav>
+      <ul
+        class="list-none relative right-10 gap-18 font-bold text-3xl font-[Inter] hidden lg:flex top-4">
+        <li><a href="Guide.html">Guide</a></li>
+        <li><a href="Market.html">Market</a></li>
+        <li class="relative text-5xl bottom-4"><a href="index.html">Home</a></li>
+        <li><a href="My-Deck.html">My Deck</a></li>
+        <li><a href="Favorites.html">Favorites</a></li>
+      </ul>
+    </nav>
+
+    <div id="cart" class="absolute h-100 w-150 bg-black/15 backdrop-blur-sm border-white border-2 rounded-[2rem] right-30 top-12 z-1000 hidden">
+      <div id="cart-container" class="flex overflow-scroll gap-30 [scrollbar-width:none]"></div>
+
+      <div id="buttons-cont">
+        <button id="order" class="absolute bg-gred font-press-start text-xs bottom-8 left-55 pl-4 pr-4 pt-2 pb-2 rounded-md">
+          Order
+        </button>
+  
+        <button id="cancel" class="absolute bg-gred font-press-start text-xs bottom-8 left-80 pl-4 pr-4 pt-2 pb-2 rounded-md">
+          Cancel
+        </button>
+  
+        <p class="absolute bottom-25 right-80 text-white font-GoldM">
+          Total:
+        </p>
+      </div>
+    </div>
+    <aside>
+      <img id="burger" src="imgs/Group 160.png" class="absolute right-4 top-4">
+      <nav>
+        <div id="side-nav" class="hidden absolute h-90 w-[12.2rem] border-2 border-red bg-black z-1000 top-12 right-0">
+          <ul class="relative grid justify-center text-white font-bold h-30 gap-8 top-12">
+            <li>
+              <a href="Guide.html">Guide</a>
+            </li>
+            <li>
+              <a href="Market.html">Market</a>
+            </li>
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>
+            <a href="My-Deck.html">My Deck</a>
+            </li>
+            <li>
+              <a href="Favorites.html">Favorites</a>
+            </li>
+          </ul>
+
+        </div>
+      </nav>
+    </aside>
+  </header>
+
+    
+
+
+    <main class="relative top-30 flex flex-col items-center">
+
+      <img src="imgs/How to Play.png" alt="Home title" class="relative bottom-10 flex justify-center m-12 w-[75vw] md:w-[50vw] lg:w-[45vw]">
+      <div class="relative grid grid-cols-1 items-center justify-items-center h-120 md:grid-cols-2 lg:grid-cols-2">
+        <div class="relative flex flex-col items-center">
+          <img src="imgs/SL.120219.25650.43 1.png" alt="bg for text" class="relative flex rounded-[2rem] w-[21rem] md:w-[25rem] ">
+          <p class="relative flex bottom-43 text-center text-md font-[Inter] font-semibold text-white w-[18rem] md:w-[22rem] text-[17px] leading-5">
+            pockemon cards is a board game where two or more players play with a deck of cards, each one with his own collection merging between rarerty and power, in each turn each player places a card of a specific pockemon (sharmender for example) 
+          </p>
+        </div>
+          
+          <img src="imgs/1-Board 1.png" class="relative bottom-[5rem] w-[16rem] md:w-[30rem]">
+      </div>
+        <div class="md:flex gap-20 mb-12">
+          <img src="imgs/Group 182.png" class="relative w-[10rem] mt-12">
+          <img src="imgs/Group 183.png" class="relative w-[10rem] mt-12">
+          <img src="imgs/Group 184.png" class="relative w-[10rem] mt-12">
+        </div>
+      </div>
+
+
+      <div class=" flex overflow-auto w-[99%] [scrollbar-width:none]">
+        <div id="group" class="caurosell relative flex animate-slide no-scrollbar">
+            <div class="card relative flex grow-0 shrink-0 flex-col w-[22rem] items-center gap-6 mt-20">
+              <p class="relative font-semibold text-greyy text-4xl">
+                common
+              </p>
+              <p class="relative text-white font-bold font-[K2D] text-[1.2rem] w-[89%] text-center">
+                it’s usually found in the normal card packs as it’s the weakest typr of cards, but it has a great defense</p>
+              <img src="imgs/card5.png" alt="card..." class="relative w-[10rem]">
+            </div>
+            <div class="card relative flex grow-0 shrink-0 flex-col w-[22rem] items-center gap-6 mt-20">
+              <p class="relative font-semibold text-uncommon text-4xl">
+                Uncommon
+              </p>
+              <p class="relative text-white font-bold font-[K2D] text-[1.2rem] w-[89%] text-center">
+                it’s usually found in the normal card packs as it’s the weakest typr of cards, but it has a great defense</p>
+              <img src="imgs/card6.png" alt="card..." class="relative w-[10rem]">
+            </div>
+            <div class="card relative flex grow-0 shrink-0 flex-col w-[22rem] items-center gap-6 mt-20">
+              <p class="relative font-semibold text-rare text-4xl">
+                Rare
+              </p>
+              <p class="relative text-white font-bold font-[K2D] text-[1.2rem] w-[89%] text-center">
+                it’s usually found in the normal card packs as it’s the weakest typr of cards, but it has a great defense</p>
+              <img src="imgs/card4.png" alt="card..." class="relative w-[10rem]">
+            </div>
+            <div class="card relative flex grow-0 shrink-0 flex-col w-[22rem] items-center gap-6 mt-20">
+              <p class="relative font-semibold text-legendary text-4xl">
+                Legendary
+              </p>
+              <p class="relative text-white font-bold font-[K2D] text-[1.2rem] w-[89%] text-center">
+                it’s usually found in the normal card packs as it’s the weakest typr of cards, but it has a great defense</p>
+              <img src="imgs/card.png" alt="card..." class="relative w-[10rem]">
+            </div>
+            <div class="card relative flex grow-0 shrink-0 flex-col w-[22rem] items-center gap-6 mt-20">
+              <p class="relative font-semibold text-gred text-4xl">
+                Mythic
+              </p>
+              <p class="relative text-white font-bold font-[K2D] text-[1.2rem] w-[89%] text-center">
+                it’s usually found in the normal card packs as it’s the weakest typr of cards, but it has a great defense</p>
+              <img src="imgs/Group 78.png" alt="card..." class="relative w-[10rem]">
+            </div>
+          </div>
+        <div id="group" class="caurosell relative flex animate-slide">
+            <div class="card relative flex grow-0 shrink-0 flex-col w-[22rem] items-center gap-6 mt-20">
+              <p class="relative font-semibold text-greyy text-4xl">
+                common
+              </p>
+              <p class="relative text-white font-bold font-[K2D] text-[1.2rem] w-[89%] text-center">
+                it’s usually found in the normal card packs as it’s the weakest typr of cards, but it has a great defense</p>
+              <img src="imgs/card5.png" alt="card..." class="relative w-[10rem]">
+            </div>
+            <div class="card relative flex grow-0 shrink-0 flex-col w-[22rem] items-center gap-6 mt-20">
+              <p class="relative font-semibold text-uncommon text-4xl">
+                Uncommon
+              </p>
+              <p class="relative text-white font-bold font-[K2D] text-[1.2rem] w-[89%] text-center">
+                it’s usually found in the normal card packs as it’s the weakest typr of cards, but it has a great defense</p>
+              <img src="imgs/card6.png" alt="card..." class="relative w-[10rem]">
+            </div>
+            <div class="card relative flex grow-0 shrink-0 flex-col w-[22rem] items-center gap-6 mt-20">
+              <p class="relative font-semibold text-rare text-4xl">
+                Rare
+              </p>
+              <p class="relative text-white font-bold font-[K2D] text-[1.2rem] w-[89%] text-center">
+                it’s usually found in the normal card packs as it’s the weakest typr of cards, but it has a great defense</p>
+              <img src="imgs/card4.png" alt="card..." class="relative w-[10rem]">
+            </div>
+            <div class="card relative flex grow-0 shrink-0 flex-col w-[22rem] items-center gap-6 mt-20">
+              <p class="relative font-semibold text-legendary text-4xl">
+                Legendary
+              </p>
+              <p class="relative text-white font-bold font-[K2D] text-[1.2rem] w-[89%] text-center">
+                it’s usually found in the normal card packs as it’s the weakest typr of cards, but it has a great defense</p>
+              <img src="imgs/card.png" alt="card..." class="relative w-[10rem]">
+            </div>
+            <div class="card relative flex grow-0 shrink-0 flex-col w-[22rem] items-center gap-6 mt-20">
+              <p class="relative font-semibold text-gred text-4xl">
+                Mythic
+              </p>
+              <p class="relative text-white font-bold font-[K2D] text-[1.2rem] w-[89%] text-center">
+                it’s usually found in the normal card packs as it’s the weakest typr of cards, but it has a great defense</p>
+              <img src="imgs/Group 78.png" alt="card..." class="relative w-[10rem]">
+            </div>
+          </div>
+
+      </div>
+
+
+    </main>
+    <section class="relative top-50 w-[20rem]">
+    <div class="flex flex-col gap-12 w-auto">
+      <div  class="QA flex flex-col gap-4 text-white font-bold font-[Inter]  md:text-2xl hover:cursor-pointer">
+        <p class="bg-grey pl-3 pt-1 pb-1 pr-2">
+          How can I seel Cards?
+        </p>
+        <p id="" class="response bg-grey pl-3 pt-1 pb-1 pr-2 hidden">
+          hello
+        </p>
+      </div>
+      <div id="" class="QA bg-grey text-white font-bold font-[Inter] pl-3 pt-1 pb-1 pr-2 md:text-2xl hover:cursor-pointer">
+        <p>
+          How can I seel Cards?
+        </p>
+        <p id="" class="response bg-grey pl-3 pt-1 pb-1 pr-2 hidden">
+          hello
+        </p>
+      </div>
+      <div id="" class="QA bg-grey text-white font-bold font-[Inter] pl-3 pt-1 pb-1 pr-2 md:text-2xl hover:cursor-pointer">
+        <p>
+          How can I seel Cards?
+        </p>
+        <p id="response" class="bg-grey pl-3 pt-1 pb-1 pr-2 hidden">
+          hello
+        </p>
+      </div>
+    </div>
+    </section>
+
+    <footer>
+      <div class="relative grid gap-6 mt-70 justify-center lg:grid-cols-2 gap-2">
+        <div class="flex flex-col items-center justify-center ">
+          <img src="imgs/Group 76.png" alt="footer image" class="relative w-55">
+          <p class="relative w-60 text-center text-white text-sm font-[Poppins] font-sans font-medium bottom-12">
+            Bring your favorite deck card to life with just two clicks and your imagination
+          </p>
+        </div>
+
+        <div class="relative grid grid-cols-3 gap-[0.5rem] justify-center  h-55 mt-12 lg:gap-[8rem] ">
+          <div class="relative mt-8 ">
+            <h2 class="relative text-sm font-bold text-[#F0D43A] bottom-8 ">
+              Game things
+            </h2>
+            <ul class="flex flex-col gap-3 text-white font-medium text-md">
+              <li><a href="#">
+                How to play
+              </a></li>
+
+              <li><a href="#">
+                Devs
+              </a></li>
+
+              <li><a href="#">
+                Mobile App
+              </a></li>
+            </ul>
+          </div>
+          
+          <div class="relative  mt-8 ">
+            <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
+              Contact
+            </h2>
+            <ul class="flex flex-col gap-3 text-white font-medium text-sm">
+              <li><a href="#">
+                Help/FAQ
+              </a></li>
+
+              <li><a href="#">
+                Contact
+              </a></li>
+
+              <li><a href="#">
+                Address
+              </a></li>
+            </ul>
+          </div>
+
+
+          <div class="relative mt-8 ">
+            <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
+              More
+            </h2>
+            <ul class="flex flex-col gap-3 text-white font-medium text-sm">
+              <li><a href="#">
+                About Pokemon
+              </a></li>
+
+              <li><a href="#">
+                Privacy Policies
+              </a></li>
+
+              <li><a href="#">
+                Get your plushy!
+              </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="flex justify-center text-white mb-3 bottom-12">
+          All rights reserved@genZdevs.co
+      </p>
+
+    </footer>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'press-start': ['"Press Start 2P"', 'cursive'],
+            'K2D': ['"K2D"', 'cursive'],
+          },
+          colors: {
+            red: '#A63348',
+            magenta: '#5F425F',
+            blue: '#3B4A6B',
+            cyan: '#1B7C97',
+            gred: '#FF0000',
+            legendary: '#FFD400',
+            rare: '#0C0091',
+            uncommon: '#00FF11',
+            common: '#FFFFFF',
+            tblue: '#1F2937',
+            grey: '#6B7280',
+            gblue: '#374151',
+            stroke: '#4B5563',
+            underbg: '#E5E7EB',
+            grayish: '#374151',
+            greyy: '#C0C0C0'
+          },
+          animation: {
+            'slide': 'slide 10s linear infinite',
+
+          },
+          keyframes: {
+            'slide': {
+              '0%': { transform: 'translateX(0%)'},
+              '100%': { transform: 'translateX(-100%)'},
+            },
+        }
+      }
+    }
+  }
+  </script>
+
+  <script type="text/javascript" src="index.js"></script>
+  <script type="text/javascript" src="Guide.js"></script>
+      
+    
+  </body>
+</html>

@@ -24,7 +24,7 @@
 
       <nav>
       <ul
-        class="list-none relative right-10 gap-18 font-bold text-3xl font-[Inter] hidden md:flex top-10 lg:flex top-4">
+        class="list-none relative right-10 gap-18 font-bold text-3xl font-[Inter] hidden lg:flex top-4">
         <li><a href="Guide.html">Guide</a></li>
         <li><a href="Market.html">Market</a></li>
         <li class="relative text-5xl bottom-4"><a href="index.html">Home</a></li>
@@ -32,13 +32,39 @@
         <li><a href="Favorites.html">Favorites</a></li>
       </ul>
     </nav>
+
+    <aside>
+      <img id="burger" src="imgs/Group 160.png" class="absolute right-4 top-4">
+      <nav>
+        <div id="side-nav" class="hidden absolute h-90 w-[12.2rem] border-2 border-red bg-black z-1000 top-12 right-0">
+          <ul class="relative grid justify-center text-white font-bold h-30 gap-8 top-12">
+            <li>
+              <a href="Guide.html">Guide</a>
+            </li>
+            <li>
+              <a href="Market.html">Market</a>
+            </li>
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>
+            <a href="My-Deck.html">My Deck</a>
+            </li>
+            <li>
+              <a href="Favorites.html">Favorites</a>
+            </li>
+          </ul>
+
+        </div>
+      </nav>
+    </aside>
     </header>
 
 
     
 
 
-    <main class="flex flex-col items-center">
+    <main class="relative top-20 flex flex-col items-center ">
 
       <img src="imgs/Group 134.png" alt="Home title" class="relative flex justify-center m-12 w-[35vw] md:w-[20vw] lg:w-[15vw]">
       <div class="relative grid grid-cols-1 items-center justify-items-center h-120 md:grid-cols-2 lg:grid-cols-2">
@@ -115,18 +141,16 @@ Be our future legacy and make your pockemon dreams come to ife  with our new and
     </main>
 
     <footer>
-      <div class="relative flex flex-col flex-wrap items-center justify-between mt-80">
-        <div class="relative flex flex-col items-center">
-          <img src="imgs/Group 76.png" alt="footer image" class="relative top-16 w-55">
-          <p class="relative w-60 text-center text-white text-sm font-[Poppins] font-sans font-medium ">
+      <div class="relative grid gap-6 mt-90 justify-center lg:grid-cols-2 gap-2">
+        <div class="flex flex-col items-center justify-center ">
+          <img src="imgs/Group 76.png" alt="footer image" class="relative w-55">
+          <p class="relative w-60 text-center text-white text-sm font-[Poppins] font-sans font-medium bottom-12">
             Bring your favorite deck card to life with just two clicks and your imagination
           </p>
         </div>
 
-        <img src="imgs/Line 10.png" alt="line..." class="relative top-15 hidden">
-
-        <div class="relative flex flex-row gap-12 h-55 mt-12">
-          <div class="relative mt-8">
+        <div class="relative grid grid-cols-3 gap-[0.5rem] justify-center  h-55 mt-12 lg:gap-[8rem] ">
+          <div class="relative mt-8 ">
             <h2 class="relative text-sm font-bold text-[#F0D43A] bottom-8 ">
               Game things
             </h2>
@@ -144,10 +168,8 @@ Be our future legacy and make your pockemon dreams come to ife  with our new and
               </a></li>
             </ul>
           </div>
-
-          <img src="imgs/Line 10.png" alt="line..." class="relative top-15 hidden">
           
-          <div class="relative  mt-8">
+          <div class="relative  mt-8 ">
             <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
               Contact
             </h2>
@@ -166,9 +188,8 @@ Be our future legacy and make your pockemon dreams come to ife  with our new and
             </ul>
           </div>
 
-          <img src="imgs/Line 10.png" alt="line..." class="relative  top-15 hidden">
 
-          <div class="relative mt-8">
+          <div class="relative mt-8 ">
             <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
               More
             </h2>
@@ -187,10 +208,10 @@ Be our future legacy and make your pockemon dreams come to ife  with our new and
             </ul>
           </div>
         </div>
-        <p class="text-white mb-3 bottom-12">
-            All rights reserved@genZdevs.co
-        </p>
       </div>
+      <p class="flex justify-center text-white mb-3 bottom-12">
+          All rights reserved@genZdevs.co
+      </p>
 
     </footer>
 
@@ -215,7 +236,7 @@ Be our future legacy and make your pockemon dreams come to ife  with our new and
   </script>
 
 
-      
+      <script type="text/javascript" src="index.js"></script>
     
   </body>
 </html>

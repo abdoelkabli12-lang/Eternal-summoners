@@ -1,52 +1,50 @@
-document.addEventListener('DOMContentLoaded', () => {
-  let currentPage = 1;
-  const itemsPerPage = 12;
-  const favContainer = document.getElementById('fav-container');
-  let currentFavorites = JSON.parse(localStorage.getItem('cards')) || [];
-  const cart = document.getElementById('cart');
+let pokemonCards = [];
+let currentPage = 1;
+const itemsPerPage = 12;
+const cart = document.getElementById('cart-icon');
 
-  // 🛒 Toggle cart visibility
-  cart.addEventListener('click', () => {
-    if (cart.style.display === 'inline') {
-      cart.style.display = 'none';
-    } else {
-      cart.style.display = 'inline';
-    }
-  });
+cart.addEventListener('click', () => {
+  const cartElement = document.getElementById('cart');
 
-
-  function calculateTotal(cards) {
-    return Math.ceil(cards.length / itemsPerPage);
+  if (cartElement.style.display === 'inline') {
+    cartElement.style.display = 'none';
+  } else {
+    cartElement.style.display = 'inline';
   }
+});
 
 
-  function displayCards(cards = [], page = 1) {
-    currentFavorites = JSON.parse(localStorage.getItem('cards')) || [];
+fetch('./pokemondata1.json')
+  .then(response => response.json())
+  .then(data => {
+    pokemonCards = data;
+    displayCards(pokemonCards, currentPage);
+  })
+  .catch(error => console.error('error connecting with the server', error));
 
-    if (currentFavorites.length === 0) {
-      favContainer.innerHTML = `
-        <div class="flex flex-col items-center justify-center mt-20">
-          <img src="imgs/bg pika.png" class="w-60 opacity-50">
-          <p class="text-white text-2xl font-GoldM mt-4">No favorites yet!</p>
-        </div>`;
-      updatePaginationControls([]);
-      return;
-    }
+function calculateTotal(cards) {
+ return Math.ceil(cards.length / itemsPerPage);
+}
 
-    const totalPages = calculateTotal(cards);
+
+function displayCards(cards, page = 1) {
+  const container = document.getElementById('card-container');
+  const totalPages = calculateTotal(cards);
     if (page < 1) page = 1;
     if (page > totalPages) page = totalPages;
-    currentPage = page;
 
-    const startIndex = (page - 1) * itemsPerPage;
+    currentPage = page; // Update the current page state
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const itemsToDisplay = cards.slice(startIndex, endIndex);
 
-    favContainer.innerHTML = '';
 
-    itemsToDisplay.forEach((card, i) => {
-      const cardHTML = `
-        <div class = "cd" class="w-60">
+  let html1 = '';
+
+  itemsToDisplay.forEach((card, i) => {
+    html1 += `
+      <div class = "cd" class="w-60">
       <div id = "cont" class="relative w-60 h-90 border-stroke border-8 rounded-lg">
         <div id = ${card.ind}-${i} class="absolute bg-underbg -z-1 h-70 w-[14rem] top-16">
         </div>
@@ -130,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
           1/1
           </p></span>
           
-          <span><p class="relative text-center">
+          <span><p class="relative text-center w-30">
           It's small but his speed is great
           </p></span>
           
@@ -140,20 +138,56 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           
           </div>
-          `;
-      favContainer.innerHTML += cardHTML;
-    });
+    `;
 
+  });
     updatePaginationControls(cards);
-        itemsToDisplay.forEach((card, i) => {
+  
+  container.innerHTML = html1;
+
+  // Set rarity background color
+  itemsToDisplay.forEach((card, i) => {
     const bgDiv = document.getElementById(`${card.ind}-${i}`);
     const rarityClasses = ['common', 'uncommon', 'rare', 'legendary', 'mythic'];
     bgDiv.classList.add(rarityClasses[card.ind - 1] || '');
   });
-  }
 
 
-  function updatePaginationControls(cards) {
+  itemsToDisplay.forEach(card => {
+    const favBtn = document.getElementById(`fav-${card.number}`);
+    const cartBtn = document.getElementById(`cart-${card.number}`);
+
+ 
+    favBtn.addEventListener('click', () => {
+      let currentFavorites = JSON.parse(localStorage.getItem('cards')) || [];
+      const alreadyFav = currentFavorites.some(fav => fav.number === card.number);
+
+      if (alreadyFav) {
+        currentFavorites = currentFavorites.filter(fav => fav.number !== card.number);
+        favBtn.textContent = 'Favorites';
+      } else {
+        currentFavorites.push(card);
+        favBtn.textContent = 'Remove';
+      }
+
+      localStorage.setItem('cards', JSON.stringify(currentFavorites));
+    });
+
+    cartBtn.addEventListener('click', () => {
+      let currentCart = JSON.parse(localStorage.getItem('cards1')) || [];
+      const existing = currentCart.find(item => item.number === card.number);
+
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        currentCart.push({ ...card, quantity: 1, price: 100 });
+      }
+
+      localStorage.setItem('cards1', JSON.stringify(currentCart));
+    });
+  });
+}
+function updatePaginationControls(cards) {
     const totalPages = calculateTotal(cards);
     const prevButton = document.getElementById('prev-button');
     const nextButton = document.getElementById('next-button');
@@ -188,35 +222,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+const mythicfilter = document.getElementById("Mythic");
+        mythicfilter.addEventListener('click', () => {
+          const mythicCards = pokemonCards.filter(card => card.rarety === "mythic");
+          displayCards(mythicCards);
+          
+        });
+        
+        const legendfilter = document.getElementById("Legendary");
+        legendfilter.addEventListener('click', () => {
+          const legendCards = pokemonCards.filter(card => card.rarety === "legendary");
+          displayCards(legendCards);
+          
+        });
+        
+        const rarefilter = document.getElementById("Rare");
+        rarefilter.addEventListener('click', () => {
+          const rareCards = pokemonCards.filter(card => card.rarety === "rare");
+          displayCards(rareCards);
+          
+        });
+        
+        const uncfilter = document.getElementById("Uncommon");
+        uncfilter.addEventListener('click', () => {
+          const uncCards = pokemonCards.filter(card => card.rarety === "uncommon");
+          displayCards(uncCards);
+          
+        });
+        
+        const comfilter = document.getElementById("Common");
+        comfilter.addEventListener('click', () => {
+          const comCards = pokemonCards.filter(card => card.rarety === "common");
+          displayCards(comCards);
+          
+        }); 
 
 
 
 
-
-
-  displayCards(currentFavorites, currentPage);
-
-
-
-
-  document.getElementById("Mythic")?.addEventListener('click', () => {
-    const mythicCards = currentFavorites.filter(c => c.ind === 5);
-    displayCards(mythicCards);
-  });
-  document.getElementById("Legendary")?.addEventListener('click', () => {
-    const legendaryCards = currentFavorites.filter(c => c.ind === 4);
-    displayCards(legendaryCards);
-  });
-  document.getElementById("Rare")?.addEventListener('click', () => {
-    const rareCards = currentFavorites.filter(c => c.ind === 3);
-    displayCards(rareCards);
-  });
-  document.getElementById("Uncommon")?.addEventListener('click', () => {
-    const uncCards = currentFavorites.filter(c => c.ind === 2);
-    displayCards(uncCards);
-  });
-  document.getElementById("Common")?.addEventListener('click', () => {
-    const comCards = currentFavorites.filter(c => c.ind === 1);
-    displayCards(comCards);
-  });
-});

@@ -2,12 +2,23 @@ const cardsContainer = document.getElementById("card-arena");
 const myCards = JSON.parse(localStorage.getItem('cards1')) || [];
 const Cards1 = document.querySelectorAll(".cards-1");
 const Cards2 = document.querySelectorAll(".cards-2");
-const endTurn = document.getElementById("endturn")
-
-
-
-
+const endTurn = document.getElementById("endturn");
+const cardsCount = document.getElementById("count-cards");
+const player = document.getElementById("players-card");
+const lightning = document.getElementById("lightning");
+const displayDuraion = 3000;
+let cardPlacedThisTurn = false;
+let click = 0;
 let draggedItem = null;
+let enemysCard = 5;
+let playerCards = 0;
+
+
+
+
+
+
+
 myCards.forEach((card, i) => {
   const cardHTML = document.createElement('div');
   cardHTML.className = "relative w-40 h-60 border-stroke border-8 rounded-lg";
@@ -94,7 +105,6 @@ myCards.forEach((card, i) => {
   })
 
 });
-
 const mainHub = document.getElementById('mainHand');
 
 mainHub.addEventListener('drop', (e) => {
@@ -106,92 +116,148 @@ mainHub.addEventListener('drop', (e) => {
       return alert('hhhhh');
     }
     mainHub.appendChild(draggedItem);
-
+    playerCards = mainHub.children.length;
+    player.innerHTML = `card(${playerCards}/5)`;
   }
 });
-
 mainHub.addEventListener('dragover', (e) => {
   e.preventDefault();
-
 })
+
+
 const usedIndices = [];
+let turn = false;
+let flip = false;
 Cards1.forEach((card) => {
   const blur = document.getElementById("blur");
   const choose = document.getElementById("choose");
   const def = document.getElementById("def");
   const atk = document.getElementById("atk");
   card.addEventListener('dragover', (e) => {
+    card.classList.add("green-bg","animate-hover");
     e.preventDefault();
   })
+  card.addEventListener('dragleave', (e) => {
+    card.classList.remove('green-bg','animate-hover');
+  })
   card.addEventListener('drop', () => {
+    if (cardPlacedThisTurn) {
+    card.classList.remove('green-bg','animate-hover');
+    return alert("You can only place one card per turn!");
+}
+    card.classList.remove('green-bg','animate-hover');
+    if (!mainHub.contains(draggedItem)) {
+      return alert("You must place the card in your hand first!");
+    }
+
     if (card.children.length > 0) {
       alert("you can't add more than 1 card in the same place...");
       return;
     }
     else {
       draggedItem.setAttribute("draggable", "false");
+
       blur.className = "fixed inset-0 z-500 backdrop-filter backdrop-blur-sm";
       choose.className = "fixed flex gap-25 justify-center items-end h-[16rem] w-[30rem] rounded-2xl bg-white/65 backdrop-blur-sm z-1000 left-[32rem] top-[15rem]";
     }
-    def.addEventListener('click', () => {
-      blur.className = "hidden fixed inset-0 z-500 backdrop-filter backdrop-blur-sm";
-      choose.className = "fixed hidden flex gap-25 justify-center items-end h-[16rem] w-[30rem] rounded-2xl bg-white/65 backdrop-blur-sm z-1000 left-[32rem] top-[15rem]";
-      draggedItem.classList.add("animate-rotate");
-      card.appendChild(draggedItem);
-
-    })
-
-    atk.addEventListener('click', () => {
-      draggedItem.setAttribute("draggable", "false");
-      draggedItem.classList.remove("animate-rotate");
+    def.onclick  = () => {
       blur.className = "hidden fixed inset-0 z-500 backdrop-filter backdrop-blur-sm";
       choose.className = "fixed hidden flex gap-25 justify-center items-end h-[16rem] w-[30rem] rounded-2xl bg-white/65 backdrop-blur-sm z-1000 left-[32rem] top-[15rem]";
       card.appendChild(draggedItem);
-      endTurn.removeAttribute("disabled");
+      click = 0;
       endTurn.classList.remove('cursor-not-allowed');
       endTurn.classList.add('active:opacity-50');
-    })
+      cardPlacedThisTurn = true;
+      turn = true;
+          card.classList.add("rotate-defense");
+      setTimeout(() => {
+        lightning.classList.remove("hidden");
+        setTimeout(() => {
+          lightning.classList.add("hidden");
+        }, displayDuraion);
+      }, 200);
+      return flip = true;
+    }
+      if(flip){
+        card.classList.add('rotate-45');
+      }
+
+    atk.onclick = () => {
+      cardPlacedThisTurn = true;
+      turn = true;
+      flip = false;
+      draggedItem.setAttribute("draggable", "false");
+      blur.className = "hidden fixed inset-0 z-500 backdrop-filter backdrop-blur-sm";
+      choose.className = "fixed hidden flex gap-25 justify-center items-end h-[16rem] w-[30rem] rounded-2xl bg-white/65 backdrop-blur-sm z-1000 left-[32rem] top-[15rem]";
+      card.appendChild(draggedItem);
+      click = 0;
+      endTurn.classList.remove('cursor-not-allowed');
+      endTurn.classList.add('active:opacity-50');
+      setTimeout(() => {
+        lightning.classList.remove("hidden");
+        setTimeout(() => {
+          lightning.classList.add("hidden");
+        }, displayDuraion);
+      }, 200);
+      if(!flip){
+        card.classList.remove('rotate-45');
+      }
+
+    }
 
   });
 })
-  endTurn.addEventListener('click', () => {
-    
-      endTurn.setAttribute("disabled");
-      endTurn.classList.add('cursor-not-allowed');
-      endTurn.classList.remove('active:opacity-50');
-      const emptySlots = Array.from(Cards2).filter(c => c.children.length === 0);
-      console.log(emptySlots);
-  
-      // if (emptySlots.length === 0) {
-      //   console.log("No empty slots left.");
-      //   return;
-      // }
-  
-      const randomContainer = emptySlots[Math.floor(Math.random() * emptySlots.length)];
-  
-      let rand;
-      do {
-        rand = Math.floor(Math.random() * myCards.length);
-      } while (usedIndices.includes(rand) && usedIndices.length < myCards.length);
-  
-      if (usedIndices.length >= myCards.length) {
-        console.log("No more cards available to clone.");
-        return;
-      }
-  
-      usedIndices.push(rand);
-  
-      const randomCard = document.getElementById(`cont-${rand}`);
-      if (!randomCard) {
-        console.warn(`Card with id cont-${rand} not found.`);
-        return;
-      }
-  
-      const clone = randomCard.cloneNode(true);
-      clone.setAttribute("draggable", "false");
-  
-      randomContainer.appendChild(clone);
-  });
+
+endTurn.addEventListener('click', () => {
+  click++;
+  if (click > 1) {
+    return;
+  }
+  cardPlacedThisTurn = false;
+  endTurn.classList.add('cursor-not-allowed');
+  endTurn.classList.remove('active:opacity-50');
+  const emptySlots = Array.from(Cards2).filter(c => c.children.length === 0);
+  console.log(emptySlots);
+
+  if (emptySlots.length === 0) {
+    console.log("No empty slots left.");
+    return;
+  }
+
+  const randomContainer = emptySlots[Math.floor(Math.random() * emptySlots.length)];
+
+  let rand;
+  do {
+    rand = Math.floor(Math.random() * myCards.length);
+  } while (usedIndices.includes(rand) && usedIndices.length < myCards.length);
+
+  if (usedIndices.length >= myCards.length) {
+    console.log("No more cards available to clone.");
+    return;
+  }
+
+  usedIndices.push(rand);
+
+  const randomCard = document.getElementById(`cont-${rand}`);
+  if (!randomCard) {
+    console.warn(`Card with id cont-${rand} not found.`);
+    return;
+  }
+
+  const clone = randomCard.cloneNode(true);
+  clone.setAttribute("draggable", "false");
+
+  randomContainer.appendChild(clone);
+  enemysCard--;
+  if (cardsCount) {
+    const enemy = document.getElementById("enemys-card");
+    enemy.innerHTML = `card(${enemysCard}/5)`
+  }
+
+});
+
+
+
 
 
 

@@ -16,6 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
 
 
   <title>
@@ -37,15 +38,18 @@
     </button>
   </div>
 
+  <div id="lightning" class="hidden">
+    <img src="imgs/Lightning.gif" class="absolute left-[42vw] w-70 z-1000 top-50 animate-scale-in">
+  </div>
+
   <div id="card-arena" class="absolute grid left-9 gap-10 overflow-y-auto h-177 w-100">
   </div>
   <div>
-    <div class="relative left-56 h-[4rem] w-[70%] bg-red ">
-      <p class="font-bold text-white text-lg">
-        card()
+    <div id="count-cards" class="relative left-56 h-[4rem] w-[72%] bg-red ">
+      <p id="enemys-card" class="font-bold text-white text-lg text-center font-GoldM">
       </p>
     </div>
-    <div class="relative grid  left-56 h-52 w-[70%] bg-blue justify-center">
+    <div class="relative grid  left-56 h-52 w-[72%] bg-blue justify-center">
 
       <div class="relative flex gap-x-10">
         <div class="cards-2 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
@@ -56,7 +60,7 @@
       </div>
 
     </div>
-    <div class="relative grid left-56 h-52 w-[70%] bg-magenta justify-center">
+    <div class="relative grid left-56 h-52 w-[72%] bg-magenta justify-center">
       <div class="relative flex gap-x-10">
         <div class="cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
         <div class="cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
@@ -65,15 +69,16 @@
         <div class="cards-1 overflow-hidden h-50 w-40 border-4 border-grey mt-1 rounded-2xl"></div>
       </div>
     </div>
-    <div id="mainHand"
-      class="overflow-hidden flex justify-center gap-12 relative left-56 h-[14.3rem] w-[70%] bg-gblue ">
+    <div id="mainHand" class="overflow-hidden flex justify-center gap-12 relative left-56 h-[14.3rem] w-[72%] bg-gblue ">
     </div>
-
+    
   </div>
-  <div class="absolute flex justify-center items-center right-0 border-3 border-white bottom-[1px] bg-black w-[15%] h-[100vh]">
-    <button id="endturn" class="absolute text-black pl-6 pr-6 rounded-lg bg-yellow font-GoldM text-lg cursor-not-allowed" disabled>
+  <div class="absolute flex justify-center items-center right-0 border-3 border-white bottom-[1px] bg-black w-[13%] h-[100vh]">
+    <button id="endturn" class="absolute text-black pl-6 pr-6 rounded-lg bg-yellow font-GoldM text-lg cursor-not-allowed">
       End Turn
     </button>
+    <p id="players-card" class="relative top-12 font-bold text-white text-lg  font-GoldM">
+    </p>
   </div>
 
 
@@ -112,14 +117,15 @@
             lightred: '#c21500',
           },
           animation: {
-            'scale-in': 'scale-in 2s ease-in 2s infinite',
+            'scale-in': 'scale-in 2s ease-in 2s forwards',
             'scale-out': 'scale-out 2s ease-out 2s infinite',
             'rotate': 'rotate 0.1s ease-in forwards',
+            'hover': 'hover 2s ease-in-out infinite'
           },
           keyframes: {
             'scale-in': {
-              '0%': { transform: 'scale(0.5)' },
-              '100%': { transform: 'scale(1)' },
+              '0%': { transform: 'scale(0.5)', opacity: '1' },
+              '100%': { transform: 'scale(1)', opacity: '0' },
             },
             'scale-out': {
               '0%': { transform: 'scale(1)' },
@@ -128,7 +134,13 @@
             'rotate': {
               '0%': { transform: 'rotate(0deg)' },
               '100%': { transform: 'rotate(-90deg)' },
-            }
+            },
+            'hover': {
+              '0%': {transform: 'translateY(5%)'},
+              '50%': {transform: 'translateY(-5%)'},
+              '100%': {transform: 'translateY(5%)'},
+            },
+
           },
         },
       }

@@ -14,7 +14,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+    <link rel="stylesheet" href="style.css">
 
   <title>
 
@@ -24,7 +24,7 @@
 <body class="bg-gradient-to-b from-red to-blue from-magenta to-cyan bg-no-repeat w-fill">
   <header class="relative flex justify-center items-start">
     <img src="imgs/Group 76.png" alt="logo" class="w-40 absolute left-6 md:w-60 lg:w-70">
-    <img src="imgs/Group 135.png" alt="Market icon" class="relative left-[65rem] hidden lg:inline z-12">
+    <img src="imgs/Group 135.png" id="cart-icon" alt="Market icon" class="relative left-[65rem] hidden lg:inline z-12">
 
     <nav>
       <ul
@@ -56,10 +56,7 @@
     </div>
   </header>
 
-  <section class="relative grid  justify-items-center mt-12">
-    <div id="Myd-container" class="relative grid md:grid-cols-3 gap-12  ml-2">
-    </div>
-  </section>
+
 
 
 
@@ -67,160 +64,144 @@
 
   <main class="relative top-30">
 
+
     <!-- desktop-nav -->
-     <nav class="z-0">
+     <nav>
       <div class="relative grow-0 gap-[2rem] justify-center overflow-scroll [scrollbar-width:none] w-[100%] hidden md:flex ">
-        <button class="text-gred font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full transition duration-300 ease-in-out hover:bg-gred hover:text-white">
+        <button id="Mythic" class="text-gred font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Mythic
         </button>
-        <button class="text-legendary font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full transition duration-300 ease-in-out hover:bg-legendary hover:text-white"">
+        <button id = "Legendary" class="text-legendary font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           legendary
         </button>
-        <button class="text-rare font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full transition duration-300 ease-in-out hover:bg-rare hover:text-white">
+        <button id="Rare" class="text-rare font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Rare
         </button>
-        <button class="text-uncommon font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full transition duration-300 ease-in-out hover:bg-uncommon hover:text-white">
+        <button id="Uncommon" class="text-uncommon font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Uncommon
         </button>
-        <button class="text-common font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full transition duration-300 ease-in-out hover:bg-common hover:text-white">
+        <button id="Common" class="text-common font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Common
         </button>
     </nav>
 
-    <!-- Mobile-nav -->
+    <!-- mobile-nav -->
 
     <nav>
-      <div class="relative flex grow-0 gap-[3rem] overflow-scroll [scrollbar-width:none] w-[23rem] left-12 md:hidden">
-        <button class="text-gred font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+      <div class="relative flex grow-0 gap-[3rem] overflow-scroll [scrollbar-width:none] w-[23rem] md:hidden">
+        <button id="Mythic"  class="text-gred font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Mythic
         </button>
-        <button class="text-legendary font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+        <button id="Legendary" class="text-legendary font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           legendary
         </button>
-        <button class="text-rare font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+        <button id="Rare" class="text-rare font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Rare
         </button>
-        <button class="text-uncommon font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+        <button id="Uncommon" class="text-uncommon font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Uncommon
         </button>
-        <button class="text-common font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
+        <button id="Common" class="text-common font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Common
         </button>
     </nav>
-
-    <div class="flex justify-center items-end w-[90vw] h-120">
-      <img class="relative  grayscale opacity-40" src="imgs/bg pika.png">
+      <section class="relative grid  justify-items-center mt-12">
+    <div id="Myd-container" class="relative grid md:grid-cols-3 gap-12  ml-2">
     </div>
+  </section>
+
+
 
     
 
-    <nav class="relative mt-12">
-      <div class="relative grow-0 gap-[5rem] justify-center overflow-scroll [scrollbar-width:none] w-[100%] hidden md:flex ">
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          <<
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          1
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          2
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          3
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          4
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          5
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          >>
-        </button>
-    </nav>
+    <div id="pagination" class="flex gap-[25rem] z-1000 justify-center">
+      <button id="prev-button" class="pl-5 pr-5 pt-2 pb-2 bg-legendary rounded-full font-extrabold text-lg">
+        <<
+      </button>
+      <div id="page-Info" class="pl-[8rem] pr-[10rem] pt-2 pb-2 bg-legendary rounded-full font-bold text-md">
+      </div>
+      <button id="next-button" class="pl-5 pr-5 pt-2 pb-2 bg-legendary rounded-full font-extrabold text-lg">
+        >>
+      </button>
+    </div>
 
 
   </main>
 
-  <footer>
-    <div class="relative flex flex-col flex-wrap items-center justify-between mt-80">
-      <div class="relative flex flex-col items-center">
-        <img src="imgs/Group 76.png" alt="footer image" class="relative top-16 w-55">
-        <p class="relative w-60 text-center text-white text-sm font-[Poppins] font-sans font-medium ">
-          Bring your favorite deck card to life with just two clicks and your imagination
-        </p>
-      </div>
+    <footer>
+      <div class="relative grid gap-6 mt-40 justify-center lg:grid-cols-2 gap-2">
+        <div class="flex flex-col items-center justify-center ">
+          <img src="imgs/Group 76.png" alt="footer image" class="relative w-55">
+          <p class="relative w-60 text-center text-white text-sm font-[Poppins] font-sans font-medium bottom-12">
+            Bring your favorite deck card to life with just two clicks and your imagination
+          </p>
+        </div>
 
-      <img src="imgs/Line 10.png" alt="line..." class="relative top-15 hidden">
-
-      <div class="relative flex flex-row gap-12 h-55 mt-12">
-        <div class="relative mt-8">
-          <h2 class="relative text-sm font-bold text-[#F0D43A] bottom-8 ">
-            Game things
-          </h2>
-          <ul class="flex flex-col gap-3 text-white font-medium text-md">
-            <li><a href="#">
+        <div class="relative grid grid-cols-3 gap-[0.5rem] justify-center  h-55 mt-12 lg:gap-[8rem] ">
+          <div class="relative mt-8 ">
+            <h2 class="relative text-sm font-bold text-[#F0D43A] bottom-8 ">
+              Game things
+            </h2>
+            <ul class="flex flex-col gap-3 text-white font-medium text-md">
+              <li><a href="#">
                 How to play
               </a></li>
 
-            <li><a href="#">
+              <li><a href="#">
                 Devs
               </a></li>
 
-            <li><a href="#">
+              <li><a href="#">
                 Mobile App
               </a></li>
-          </ul>
-        </div>
-
-        <img src="imgs/Line 10.png" alt="line..." class="relative top-15 hidden">
-
-        <div class="relative  mt-8">
-          <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
-            Contact
-          </h2>
-          <ul class="flex flex-col gap-3 text-white font-medium text-sm">
-            <li><a href="#">
+            </ul>
+          </div>
+          
+          <div class="relative  mt-8 ">
+            <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
+              Contact
+            </h2>
+            <ul class="flex flex-col gap-3 text-white font-medium text-sm">
+              <li><a href="#">
                 Help/FAQ
               </a></li>
 
-            <li><a href="#">
+              <li><a href="#">
                 Contact
               </a></li>
 
-            <li><a href="#">
+              <li><a href="#">
                 Address
               </a></li>
-          </ul>
-        </div>
+            </ul>
+          </div>
 
-        <img src="imgs/Line 10.png" alt="line..." class="relative  top-15 hidden">
 
-        <div class="relative mt-8">
-          <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
-            More
-          </h2>
-          <ul class="flex flex-col gap-3 text-white font-medium text-sm">
-            <li><a href="#">
+          <div class="relative mt-8 ">
+            <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
+              More
+            </h2>
+            <ul class="flex flex-col gap-3 text-white font-medium text-sm">
+              <li><a href="#">
                 About Pokemon
               </a></li>
 
-            <li><a href="#">
+              <li><a href="#">
                 Privacy Policies
               </a></li>
 
-            <li><a href="#">
+              <li><a href="#">
                 Get your plushy!
               </a></li>
-          </ul>
+            </ul>
+          </div>
         </div>
       </div>
-      <p class="text-white mb-3 bottom-12">
-        All rights reserved@genZdevs.co
+      <p class="flex justify-center text-white mb-3 bottom-12">
+          All rights reserved@genZdevs.co
       </p>
-    </div>
 
-  </footer>
+    </footer>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>

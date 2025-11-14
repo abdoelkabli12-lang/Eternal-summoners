@@ -17,3 +17,19 @@
 .mythic {
   background: linear-gradient(#FF9D00 50%, #FF0000);
 }
+
+.caurosell::-webkit-scrollbar{
+  display:none;
+}
+
+.green-bg {
+  background-color: #00FF2F;
+}
+
+.red-bg {
+  background-color: #ff0000;
+}
+.rotate-defense {
+  transform: rotate(90deg);
+  transition: transform 0.4s ease;
+}

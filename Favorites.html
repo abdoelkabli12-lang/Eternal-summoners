@@ -25,11 +25,11 @@
 <body class="bg-gradient-to-b from-red to-blue from-magenta to-cyan bg-no-repeat w-fill">
   <header class="relative flex justify-center items-start">
     <img src="imgs/Group 76.png" alt="logo" class="w-40 absolute left-6 md:w-60 lg:w-70">
-    <img src="imgs/Group 135.png" alt="Market icon" id="cart-icon" class="relative left-[65rem] hidden lg:inline">
+    <img src="imgs/Group 135.png" id = "cart-icon" alt="Market icon" class="relative left-[65rem] hidden lg:inline z-1001">
 
     <nav>
       <ul
-        class="list-none relative right-10 gap-18 font-bold text-3xl font-[Inter] hidden md:flex top-10 lg:flex top-4">
+        class="list-none relative right-10 gap-18 font-bold text-3xl font-[Inter] hidden lg:flex top-4">
         <li><a href="Guide.html">Guide</a></li>
         <li><a href="Market.html">Market</a></li>
         <li class="relative text-5xl bottom-4"><a href="index.html">Home</a></li>
@@ -39,23 +39,47 @@
     </nav>
 
     <div id="cart" class="absolute h-100 w-150 bg-black/15 backdrop-blur-sm border-white border-2 rounded-[2rem] right-30 top-12 z-1000 hidden">
-      <div id="cart-container" class="flex overflow-scroll gap-30 [scrollbar-width:none]">
-        
-      <button id="order" class="absolute bg-gred font-press-start text-xs bottom-12 left-45 pl-4 pr-4 pt-2 pb-2 rounded-md">
-        Order
-      </button>
+      <div id="cart-container" class="flex overflow-scroll gap-30 [scrollbar-width:none]"></div>
 
-      <button id="cancel" class="absolute bg-gred font-press-start text-xs bottom-12 left-80 pl-4 pr-4 pt-2 pb-2 rounded-md">
-        Cancel
-      </button>
-
-      <p class="absolute bottom-25 right-80 text-white font-GoldM">
-        Total:
-      </p>
-      <p id="total" class="absolute bottom-25 right-65 text-white font-GoldM">
-        0$
-      </p>
+      <div id="buttons-cont">
+        <button id="order" class="absolute bg-gred font-press-start text-xs bottom-8 left-55 pl-4 pr-4 pt-2 pb-2 rounded-md">
+          Order
+        </button>
+  
+        <button id="cancel" class="absolute bg-gred font-press-start text-xs bottom-8 left-80 pl-4 pr-4 pt-2 pb-2 rounded-md">
+          Cancel
+        </button>
+  
+        <p class="absolute bottom-25 right-80 text-white font-GoldM">
+          Total:
+        </p>
+      </div>
     </div>
+    <aside>
+      <img id="burger" src="imgs/Group 160.png" class="absolute right-4 top-4">
+      <nav>
+        <div id="side-nav" class="hidden absolute h-90 w-[12.2rem] border-2 border-red bg-black z-1000 top-12 right-0">
+          <ul class="relative grid justify-center text-white font-bold h-30 gap-8 top-12">
+            <li>
+              <a href="Guide.html">Guide</a>
+            </li>
+            <li>
+              <a href="Market.html">Market</a>
+            </li>
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>
+            <a href="My-Deck.html">My Deck</a>
+            </li>
+            <li>
+              <a href="Favorites.html">Favorites</a>
+            </li>
+          </ul>
+
+        </div>
+      </nav>
+    </aside>
   </header>
 
 
@@ -65,8 +89,8 @@
   <main class="relative top-30">
 
     <!-- desktop-nav -->
-     <nav>
-      <div class="relative grow-0 gap-[2rem] justify-center overflow-scroll [scrollbar-width:none] w-[100%] hidden md:flex ">
+    <nav>
+      <div class="relative grow-0 gap-[2rem] justify-center overflow-scroll [scrollbar-width:none] w-[100%] hidden md:flex top-6">
         <button id="Mythic" class="text-gred font-extrabold bg-myblue pl-8 pr-8 pt-2 pb-2 rounded-full">
           Mythic
         </button>
@@ -109,30 +133,7 @@
 
     
 
-    <nav class="relative mt-12">
-      <div class="relative grow-0 gap-[5rem] justify-center overflow-scroll [scrollbar-width:none] w-[100%] hidden md:flex ">
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          <<
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          1
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          2
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          3
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          4
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          5
-        </button>
-        <button class="text-black font-extrabold bg-legendary pl-8 pr-8 pt-2 pb-2 rounded-full">
-          >>
-        </button>
-    </nav>
+
 
     <section class="relative grid justify-items-center mt-12">
 
@@ -141,89 +142,94 @@
 
     </section>
 
+    <div id="pagination" class="flex justify-center gap-[5rem] z-1000 mb-24 mt-24 md:gap-[5rem] lg:gap-[25rem]">
+      <button id="prev-button" class="pl-5 pr-5 pt-2 pb-2 bg-legendary rounded-full font-extrabold text-lg">
+        <<
+      </button>
+      <div id="page-Info" class="pl-[8rem] pr-[10rem] pt-2 pb-2 bg-legendary rounded-full font-bold text-md hidden md:inline">
+      </div>
+      <button id="next-button" class="pl-5 pr-5 pt-2 pb-2 bg-legendary rounded-full font-extrabold text-lg">
+        >>
+      </button>
+    </div>
+
 
   </main>
 
-  <footer>
-    <div class="relative flex flex-col flex-wrap items-center justify-between mt-80">
-      <div class="relative flex flex-col items-center">
-        <img src="imgs/Group 76.png" alt="footer image" class="relative top-16 w-55">
-        <p class="relative w-60 text-center text-white text-sm font-[Poppins] font-sans font-medium ">
-          Bring your favorite deck card to life with just two clicks and your imagination
-        </p>
-      </div>
+    <footer>
+      <div class="relative grid gap-6 mt-40 justify-center lg:grid-cols-2 gap-2">
+        <div class="flex flex-col items-center justify-center ">
+          <img src="imgs/Group 76.png" alt="footer image" class="relative w-55">
+          <p class="relative w-60 text-center text-white text-sm font-[Poppins] font-sans font-medium bottom-12">
+            Bring your favorite deck card to life with just two clicks and your imagination
+          </p>
+        </div>
 
-      <img src="imgs/Line 10.png" alt="line..." class="relative top-15 hidden">
-
-      <div class="relative flex flex-row gap-12 h-55 mt-12">
-        <div class="relative mt-8">
-          <h2 class="relative text-sm font-bold text-[#F0D43A] bottom-8 ">
-            Game things
-          </h2>
-          <ul class="flex flex-col gap-3 text-white font-medium text-md">
-            <li><a href="#">
+        <div class="relative grid grid-cols-3 gap-[0.5rem] justify-center  h-55 mt-12 lg:gap-[8rem] ">
+          <div class="relative mt-8 ">
+            <h2 class="relative text-sm font-bold text-[#F0D43A] bottom-8 ">
+              Game things
+            </h2>
+            <ul class="flex flex-col gap-3 text-white font-medium text-md">
+              <li><a href="#">
                 How to play
               </a></li>
 
-            <li><a href="#">
+              <li><a href="#">
                 Devs
               </a></li>
 
-            <li><a href="#">
+              <li><a href="#">
                 Mobile App
               </a></li>
-          </ul>
-        </div>
-
-        <img src="imgs/Line 10.png" alt="line..." class="relative top-15 hidden">
-
-        <div class="relative  mt-8">
-          <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
-            Contact
-          </h2>
-          <ul class="flex flex-col gap-3 text-white font-medium text-sm">
-            <li><a href="#">
+            </ul>
+          </div>
+          
+          <div class="relative  mt-8 ">
+            <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
+              Contact
+            </h2>
+            <ul class="flex flex-col gap-3 text-white font-medium text-sm">
+              <li><a href="#">
                 Help/FAQ
               </a></li>
 
-            <li><a href="#">
+              <li><a href="#">
                 Contact
               </a></li>
 
-            <li><a href="#">
+              <li><a href="#">
                 Address
               </a></li>
-          </ul>
-        </div>
+            </ul>
+          </div>
 
-        <img src="imgs/Line 10.png" alt="line..." class="relative  top-15 hidden">
 
-        <div class="relative mt-8">
-          <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
-            More
-          </h2>
-          <ul class="flex flex-col gap-3 text-white font-medium text-sm">
-            <li><a href="#">
+          <div class="relative mt-8 ">
+            <h2 class="relative text-md font-bold text-[#F0D43A] bottom-8">
+              More
+            </h2>
+            <ul class="flex flex-col gap-3 text-white font-medium text-sm">
+              <li><a href="#">
                 About Pokemon
               </a></li>
 
-            <li><a href="#">
+              <li><a href="#">
                 Privacy Policies
               </a></li>
 
-            <li><a href="#">
+              <li><a href="#">
                 Get your plushy!
               </a></li>
-          </ul>
+            </ul>
+          </div>
         </div>
       </div>
-      <p class="text-white mb-3 bottom-12">
-        All rights reserved@genZdevs.co
+      <p class="flex justify-center text-white mb-3 bottom-12">
+          All rights reserved@genZdevs.co
       </p>
-    </div>
 
-  </footer>
-
+    </footer>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -258,6 +264,8 @@
   </script>
   <script type="text/javascript" src="cart.js"></script>
   <script type="text/javascript" src="favorites.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+
 
 
 </body>

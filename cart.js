@@ -14,18 +14,7 @@ function renderCarts() {
     return;
   }
 
-  cartContainer.innerHTML = `
-  <button id="order" class="absolute bg-gred font-press-start text-xs bottom-5 left-45 pl-4 pr-4 pt-2 pb-2 rounded-md">
-        Order
-      </button>
 
-      <button id="cancel" data-number = "1"  class="remove-cart absolute bg-gred font-press-start text-xs bottom-5 left-80 pl-4 pr-4 pt-2 pb-2 rounded-md">
-        Cancel
-      </button>
-
-      <p class="absolute bottom-16 right-80 text-white font-GoldM">
-        Total:
-      </p>`;
   cart.forEach((card, i) => {
     const cardHTML =`
     <div id="cart-container-${i}" class=" grid grid-cols-2">
@@ -182,19 +171,19 @@ function renderCarts() {
 }
 
 
-const cancel = document.getElementById("cancel");
+let cancel = document.getElementById("cancel");
 
 cancel.addEventListener('click', () => {
-  console.log('heyyyy');
-  JSON.parse(localStorage.getItem('cards1')) || [];
+
+
   renderCarts();
 });
+
 
     const id = document.getElementById('order');
 
     id.addEventListener('click', () => {
       JSON.parse(localStorage.getItem('cards1'));
-      alert('her');
     });
 renderCarts();
 

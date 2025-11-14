@@ -1,16 +1,34 @@
+const myDeckContainer = document.getElementById('Myd-container');
+let myDeck = JSON.parse(localStorage.getItem('cards1')) || [];
+let currentPage = 1;
+const itemsPerPage = 12;
 
-  const myDeckContainer = document.getElementById('Myd-container');
-  const myDeck = JSON.parse(localStorage.getItem('cards1')) || [];
-  
-  const cart = document.getElementById('cart-icon');
+const cart = document.getElementById('cart-icon');
+cart.addEventListener("click", () => {
+  const c = document.getElementById("cart");
+  c.style.display = c.style.display === "inline" ? "none" : "inline";
+});
 
+function calculateTotal(cards) {
+  return Math.ceil(cards.length / itemsPerPage);
+}
 
+function displayCards(cards = myDeck, page = 1) {
+  myDeck = JSON.parse(localStorage.getItem("cards1")) || [];
 
-  function renderMyDeck() {
-  myDeckContainer.innerHTML = '';
-  myDeck.forEach((card, i) => {
-    const cardHTML =`
-    <div class = "cd" class="w-60">
+  const totalPages = calculateTotal(cards);
+  if (page < 1) page = 1;
+  if (page > totalPages) page = totalPages;
+
+  currentPage = page;
+  const startIndex = (page - 1) * itemsPerPage;
+  const itemsToDisplay = cards.slice(startIndex, startIndex + itemsPerPage);
+
+  myDeckContainer.innerHTML = "";
+
+  itemsToDisplay.forEach((card, i) => {
+    myDeckContainer.innerHTML += `
+    <div>
       <div id = "cont" class="relative w-60 h-90 border-stroke border-8 rounded-lg">
         <div id = ${card.ind}-${i} class="absolute bg-underbg -z-1 h-70 w-[14rem] top-16">
         </div>
@@ -81,7 +99,7 @@
       </div>
 
       <div class="relative left-2 top-2">
-        <button  id = "fav-${card.number}" data-number = "${card.number}" class="remove-fav bg-black text-white font-GoldM p-2 rounded-xl w-25">
+        <button  id = "sell-${i}" data-number = "${card.number}" class="remove-fav bg-black text-white font-GoldM p-2 rounded-xl w-25">
           sell
         </button>
         <button id = "id-${i}" class="bg-black text-white font-GoldM p-2 rounded-xl">
@@ -104,18 +122,79 @@
           </div>
           
           </div>`;
-    myDeckContainer.innerHTML += cardHTML;
+          // rarity background coloring
+          itemsToDisplay.forEach((card, i) => {
+            const bg = document.getElementById(`${card.ind}-${i}`);
+            const colors = ["common", "uncommon", "rare", "legendary", "mythic"];
+            bg.classList.add(colors[card.ind - 1]);
+          });
   });
 
-  
+
+  // event listeners
+  itemsToDisplay.forEach((card, i) => {
+    const sellBtn = document.getElementById(`sell-${i}`);
+    const favBtn = document.getElementById(`id-${i}`);
+
+    sellBtn.addEventListener("click", () => {
+      let deck = JSON.parse(localStorage.getItem("cards1")) || [];
+      deck = deck.filter(d => d.number !== card.number);
+      localStorage.setItem("cards1", JSON.stringify(deck));
+
+      myDeck = deck;
+      displayCards(myDeck, currentPage);
+    });
+
+    favBtn.addEventListener("click", () => {
+      let fav = JSON.parse(localStorage.getItem("cards")) || [];
+
+      if (!fav.some(f => f.number === card.number)) {
+        fav.push(card);
+        favBtn.textContent = "Added!";
+      } else {
+        fav = fav.filter(f => f.number !== card.number);
+        favBtn.textContent = "Favorites";
+      }
+
+      localStorage.setItem("cards", JSON.stringify(fav));
+    });
+  });
+
+  updatePaginationControls(cards);
 }
 
-renderMyDeck();
+function updatePaginationControls(cards) {
+  const totalPages = calculateTotal(cards);
+  document.getElementById("prev-button").disabled = currentPage === 1;
+  document.getElementById("next-button").disabled = currentPage === totalPages;
+  document.getElementById("page-Info").textContent =
+    `Page ${currentPage} of ${totalPages}`;
+}
+
+// Pagination
+document.getElementById("prev-button").addEventListener("click", () => {
+  if (currentPage > 1) displayCards(myDeck, currentPage - 1);
+});
+
+document.getElementById("next-button").addEventListener("click", () => {
+  if (currentPage < calculateTotal(myDeck)) displayCards(myDeck, currentPage + 1);
+});
 
 
+document.getElementById("Mythic").addEventListener("click", () => {
+  displayCards(myDeck.filter(c => c.rarety === "mythic"));
+});
+document.getElementById("Legendary").addEventListener("click", () => {
+  displayCards(myDeck.filter(c => c.rarety === "legendary"));
+});
+document.getElementById("Rare").addEventListener("click", () => {
+  displayCards(myDeck.filter(c => c.rarety === "rare"));
+});
+document.getElementById("Uncommon").addEventListener("click", () => {
+  displayCards(myDeck.filter(c => c.rarety === "uncommon"));
+});
+document.getElementById("Common").addEventListener("click", () => {
+  displayCards(myDeck.filter(c => c.rarety === "common"));
+});
 
-
-
-
-
-
+displayCards(myDeck);
