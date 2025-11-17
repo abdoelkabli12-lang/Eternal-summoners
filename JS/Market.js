@@ -1,6 +1,6 @@
 let pokemonCards = [];
 let currentPage = 1;
-const cardsPerPage = 12;
+const itemsPerPage = 12;
 const cart = document.getElementById('cart-icon');
 
 cart.addEventListener('click', () => {
@@ -14,7 +14,7 @@ cart.addEventListener('click', () => {
 });
 
 
-fetch('./pokemondata1.json')
+fetch('JS/pokemondata1.json')
   .then(response => response.json())
   .then(data => {
     pokemonCards = data;
@@ -22,16 +22,27 @@ fetch('./pokemondata1.json')
   })
   .catch(error => console.error('error connecting with the server', error));
 
+function calculateTotal(cards) {
+ return Math.ceil(cards.length / itemsPerPage);
+}
+
 
 function displayCards(cards, page = 1) {
   const container = document.getElementById('card-container');
-  const startIndex = (page - 1) * cardsPerPage;
-  const endIndex = page * cardsPerPage;
-  const paginatedCards = cards.slice(startIndex, endIndex);
+  const totalPages = calculateTotal(cards);
+    if (page < 1) page = 1;
+    if (page > totalPages) page = totalPages;
+
+    currentPage = page; // Update the current page state
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const itemsToDisplay = cards.slice(startIndex, endIndex);
+
 
   let html1 = '';
 
-  paginatedCards.forEach((card, i) => {
+  itemsToDisplay.forEach((card, i) => {
     html1 += `
       <div class = "cd" class="w-60">
       <div id = "cont" class="relative w-60 h-90 border-stroke border-8 rounded-lg">
@@ -117,7 +128,7 @@ function displayCards(cards, page = 1) {
           1/1
           </p></span>
           
-          <span><p class="relative text-center">
+          <span><p class="relative text-center w-30">
           It's small but his speed is great
           </p></span>
           
@@ -128,20 +139,21 @@ function displayCards(cards, page = 1) {
           
           </div>
     `;
-  });
 
+  });
+    updatePaginationControls(cards);
+  
   container.innerHTML = html1;
-  renderPaginationControls(cards);
 
   // Set rarity background color
-  paginatedCards.forEach((card, i) => {
+  itemsToDisplay.forEach((card, i) => {
     const bgDiv = document.getElementById(`${card.ind}-${i}`);
     const rarityClasses = ['common', 'uncommon', 'rare', 'legendary', 'mythic'];
     bgDiv.classList.add(rarityClasses[card.ind - 1] || '');
   });
 
 
-  paginatedCards.forEach(card => {
+  itemsToDisplay.forEach(card => {
     const favBtn = document.getElementById(`fav-${card.number}`);
     const cartBtn = document.getElementById(`cart-${card.number}`);
 
@@ -175,6 +187,39 @@ function displayCards(cards, page = 1) {
     });
   });
 }
+function updatePaginationControls(cards) {
+    const totalPages = calculateTotal(cards);
+    const prevButton = document.getElementById('prev-button');
+    const nextButton = document.getElementById('next-button');
+    const pageInfo = document.getElementById('page-Info');
+
+    if (prevButton) prevButton.disabled = (currentPage === 1);
+    if (nextButton) nextButton.disabled = (currentPage === totalPages);
+
+    if (pageInfo) pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+
+}
+// Initial display on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const prevButton = document.getElementById('prev-button');
+  const nextButton = document.getElementById('next-button');
+
+  if (prevButton) {
+    prevButton.addEventListener('click', () => {
+      if (currentPage > 1) displayCards(pokemonCards, currentPage - 1);
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener('click', () => {
+      const totalPages = calculateTotal(pokemonCards);
+      if (currentPage < totalPages) displayCards(pokemonCards, currentPage + 1);
+    });
+  }
+});
+
+
+
 
 
 const mythicfilter = document.getElementById("Mythic");
@@ -213,52 +258,5 @@ const mythicfilter = document.getElementById("Mythic");
         }); 
 
 
-
-function renderPaginationControls(cards) {
-  const pagination = document.getElementById('pagination');
-  if (!pagination) return;
-
-  const totalPages = (cards.length / cardsPerPage);
-  let buttons = '';
-
-  if (currentPage > 1) {
-    buttons += `<button class="bg-gray-700 text-white px-3 py-1 rounded" id="prev">Prev</button>`;
-  }
-
-  for (let i = 1; i <= totalPages; i++) {
-    buttons += `
-      <button class="px-3 py-1 rounded ${i === currentPage ? 'bg-blue-500 text-white' : 'bg-gray-300'}" data-page="${i}">
-        ${i}
-      </button>`;
-  }
-
-  if (currentPage < totalPages) {
-    buttons += `<button class="bg-gray-700 text-white px-3 py-1 rounded" id="next">Next</button>`;
-  }
-
-  pagination.innerHTML = buttons;
-
-  pagination.querySelectorAll('button[data-page]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      currentPage = Number(btn.dataset.page);
-      displayCards(cards, currentPage);
-    });
-  });
-
-  const prevBtn = document.getElementById('prev');
-  const nextBtn = document.getElementById('next');
-
-  if (prevBtn)
-    prevBtn.addEventListener('click', () => {
-      currentPage--;
-      displayCards(cards, currentPage);
-    });
-
-  if (nextBtn)
-    nextBtn.addEventListener('click', () => {
-      currentPage++;
-      displayCards(cards, currentPage);
-    });
-}
 
 
